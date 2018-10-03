@@ -1,0 +1,37 @@
+._login_card, ._signup_card {
+    width: 20rem !important;
+    min-height: 30rem !important;
+}
+
+._valid_input input {
+    border-color: #28a745;
+}
+
+._valid_input input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, .25);
+}
+
+._invalid_input input {
+    border-color: #dc3545;
+}
+
+._invalid_input input:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25);
+}
+
+._invalid_feedback {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+._login_form button, ._signup_form button {
+    background: linear-gradient(215deg, #546e7a, #37474f);
+}
+
+._login_form button:hover, ._signup_form button:hover {
+    background: linear-gradient(215deg, #a6cada, #4b6775);
+}

@@ -1,0 +1,28 @@
+{% extends "login.html" %}
+{% block title %}Signup Visual Sensor{% endblock %}
+
+{% block content_card %}
+    <div class="_signup">
+        <div class="_signup_card card">
+            <div class="card-body">
+                <div class="_login_logo text-center">
+                    <img src="{{url_for('static', filename='src/logo.svg')}}" 
+                         alt="site logo" class="m-2" style="height:4rem;width:4rem;">
+                    <p class="lead mb-2">Create your personal account</p>
+                </div><!-- login logo div end -->
+                <form class="_signup_form" method="post">
+                    {{form.hidden_tag()}}
+                    {{render_field(form.username, class="form-control", placeholder="请请创建用户名")}}
+                    {{render_field(form.password, class="form-control", placeholder="请输入密码")}}
+                    {{render_field(form.password2, class="form-control", placeholder="请确认密码")}}
+                    {{render_field(form.email, class="form-control", placeholder="请输入邮箱地址")}}
+                    <button type="submit" class="btn btn-dark btn-block">注册</button>
+                </form><!-- _login_form end -->
+                <p class="text-center mt-2">
+                    <span class="text-muted align-middle">已有账号？</span>
+                    <a href="{{url_for('.login')}}" class="badge badge-pill badge-success align-middle">立即登入</a>
+                </p>
+            </div><!-- _login card-body end -->
+        </div><!-- _login card end -->
+    </div><!-- _login div end -->
+{% endblock %}

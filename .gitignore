@@ -1,0 +1,13 @@
+
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+### Dark_sould website ###
+website/__pycache__/*
+*.db
+.*
+!.gitignore
+*.pyc

@@ -1,0 +1,61 @@
+test {
+    color: #c23531;
+}
+
+/* _sidebar text color (in)active*/
+._wrapper ._sidebar {
+    max-width: 200px;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+._wrapper ._sidebar a {
+
+    color: #999999;
+}
+
+._wrapper ._sidebar a:hover {
+    color: #fff;
+}
+
+._wrapper ._sidebar ._inner{
+    background: #000;
+}
+
+._wrapper ._sidebar ._inner:hover {
+    background: #082f31;
+}
+
+._wrapper ._sidebar ._outer {
+    background: #343a40;
+}
+
+/* _main area basic style */
+._main {
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+
+
+
+/*_visual card & btn style*/
+._visual {
+    height: calc(100vh - 5rem);
+}
+
+._visual button {
+    box-shadow: none !important;
+}
+
+._model_or_form {
+    min-width: 40rem;
+    min-height: 40rem;
+}
+
+/*_echarts style*/
+._echarts .carousel {
+    min-height: 18rem !important;
+    max-height: 30rem !important;
+    min-width: 30rem !important;
+}
