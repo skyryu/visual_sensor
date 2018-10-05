@@ -4,35 +4,6 @@
  * applying to $(._wrapper ._main ._visual ._echarts) 
  */
 echarts_draw = function() {
-    //1) Sidebar js
-    $('._wrapper ._sidebar ._inner').on('click', function () {
-        alert('aaa');
-    });
-
-    $('.btn-toggle-sidebar').on('click', function () {
-        $('.wrapper').toggleClass('sidebar-collapse');
-    });
-    $('.sb-item').on('click', function () {
-        if ($(this).hasClass('btn-toggle-sidebar')) return;
-        $(this).siblings().removeClass('active');
-        $(this).siblings().find('.sb-item').removeClass('active');
-        $(this).addClass('active');
-    });
-
-    //2) model and statistic form js
-    $('#_navbar_statistics_show_anchor a').on('click', function(){
-        $('#_navbar_statistics_show_anchor').addClass('active');
-        $('#_navbar_model_show_anchor').removeClass('active');
-        $('._3d_model').addClass('d-none');
-        $('._statistic_form').removeClass('d-none');
-    });
-
-    $('#_navbar_model_show_anchor a').on('click', function(){
-        $('#_navbar_statistics_show_anchor').removeClass('active');
-        $('#_navbar_model_show_anchor').addClass('active');
-        $('._3d_model').removeClass('d-none');
-        $('._statistic_form').addClass('d-none');
-    });
 
     //3) Echarts js
     //prevent auto sliding
@@ -61,19 +32,6 @@ echarts_draw = function() {
     for (var i = 0; i < 1000; i++) {
         data.push(randomData());
     }
-    
-    
-    setInterval(function () {
-        for (var i = 0; i < 5; i++) {
-            data.shift();
-            data.push(randomData());
-        }
-        lineChart1.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 1000);
 
     // 指定图表的配置项和数据
     var lineChartOption = {
@@ -257,16 +215,28 @@ echarts_draw = function() {
     // 基于准备好的dom，初始化echarts实例
     var pieChart1 = echarts.init(document.getElementById('pieChart1'), 'dark');
     var lineChart1 = echarts.init(document.getElementById('lineChart1'));
-    var myChart3 = echarts.init(document.getElementById('piechart3'));
+    var myChart3 = echarts.init(document.getElementById('pieChart3'));
 
     // 使用刚指定的配置项和数据显示图表。
     pieChart1.setOption(pieChartOption);
     lineChart1.setOption(lineChartOption);
     myChart3.setOption(pieChartOption);
+
     window.onresize = function () {
         pieChart1.resize();
         lineChart1.resize();
         myChart3.resize();
     };
 
+    setInterval(function () {
+        for (var i = 0; i < 5; i++) {
+            data.shift();
+            data.push(randomData());
+        }
+        lineChart1.setOption({
+            series: [{
+                data: data
+            }]
+        });
+    }, 1000);
 };

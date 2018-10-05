@@ -8,36 +8,38 @@
 {% endblock %}
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid h-100">
-        <div class="container d-flex justify-content-around">
-            <div class="_site_intro d-none d-xl-block">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its
-                    parent.</p>
-            </div><!-- _site_intro end -->
+    <div class="container-fluid p-0" style="height:100vh">
+        <div class="jumbotron jumbotron-fluid h-100">
+            <div class="container d-flex justify-content-around">
+                <div class="_site_intro d-none d-xl-block">
+                    <h1 class="display-4">Fluid jumbotron</h1>
+                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its
+                        parent.</p>
+                </div><!-- _site_intro end -->
 
-            {% block content_card %}
-            <div class="_login">
-                <div class="_login_card card">
-                    <div class="card-body">
-                        <div class="_login_logo text-center">
-                            <img src="{{url_for('static', filename='src/logo.svg')}}" alt="site logo" class="m-2" style="height:4rem;width:4rem;">
-                            <p class="lead mb-2">Sign in to this site</p>
-                        </div><!-- login logo div end -->
-                        <form class="_login_form" method="post">
-                            {{form.hidden_tag()}}
-                            {{render_field(form.username, class="form-control", placeholder="请输入用户名")}}
-                            {{render_field(form.password, class="form-control", placeholder="请输入密码")}}
-                            <button type="submit" class="btn btn-dark btn-block">登入</button>
-                        </form><!-- _login_form end -->
-                        <p class="text-center mt-2">
-                            <span class="text-muted align-middle">尚未拥有账号？</span>
-                            <a href="{{url_for('.signup')}}" class="badge badge-pill badge-success align-middle">立即注册</a>
-                        </p>
-                    </div><!-- _login card-body end -->
-                </div><!-- _login card end -->
-            </div><!-- _login div end -->
-            {% endblock %}
-        </div><!-- jumbotron inner container end -->
-    </div><!-- jumbotron end-->
+                {% block content_card %}
+                <div class="_login">
+                    <div class="_login_card card">
+                        <div class="card-body">
+                            <div class="_login_logo text-center">
+                                <img src="{{url_for('static', filename='src/logo.svg')}}" alt="site logo" class="m-2" style="height:4rem;width:4rem;">
+                                <p class="lead mb-2">Sign in to this site</p>
+                            </div><!-- login logo div end -->
+                            <form class="_login_form" method="post">
+                                {{form.hidden_tag()}}
+                                {{render_field(form.username, class="form-control", placeholder="请输入用户名")}}
+                                {{render_field(form.password, class="form-control", placeholder="请输入密码")}}
+                                <button type="submit" class="btn btn-dark btn-block">登入</button>
+                            </form><!-- _login_form end -->
+                            <p class="text-center mt-2">
+                                <span class="text-muted align-middle">尚未拥有账号？</span>
+                                <a href="{{url_for('.signup')}}" class="badge badge-pill badge-success align-middle">立即注册</a>
+                            </p>
+                        </div><!-- _login card-body end -->
+                    </div><!-- _login card end -->
+                </div><!-- _login div end -->
+                {% endblock %}
+            </div><!-- jumbotron inner container end -->
+        </div><!-- jumbotron end-->
+    </div>
 {% endblock %}

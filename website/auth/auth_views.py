@@ -24,11 +24,11 @@ def login():
         if user is None:
             form.username.errors.append("用户名不存在")
         elif not user.check_password(form.password.data):
-            form.password.errors.append("秘密错误")
+            form.password.errors.append("密码错误")
         else:
             print('user login succeeds')
             login_user(user, True)
-            return redirect(request.args.get('next') or url_for('.signup', username=user.username))
+            return redirect(request.args.get('next') or url_for('home.main'))
     print('after validate on submit')
     return render_template('login.html', form=form)
 

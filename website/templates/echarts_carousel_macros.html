@@ -1,0 +1,25 @@
+{% macro render_echarts_carousel(chart_id) %}
+<div id="{{chart_id}}_carousel" class="carousel slide bg-dark rounded mt-1 w-100 h-25" data-ride="carousel">
+    <div class="carousel-inner w-100 h-100">
+        <div class="carousel-item active w-100 h-100">
+            <div class="d-flex justify-content-center w-100 h-100 p-0 m-0">
+                <div class="card rounded-0 w-75 p-0 border-0">
+                    <div class="card-body h-100 p-0">
+                        <div id="{{ chart_id }}" class="h-100 p-0"></div>
+                    </div><!-- card body end -->
+                </div><!-- card end -->
+            </div>
+        </div><!-- carousel-item end -->
+    </div><!-- carousel-inner end -->
+
+    <a class="carousel-control-prev" href="#{{chart_id}}_carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a><!-- control-prev end-->
+    <a class="carousel-control-next" href="#{{chart_id}}_carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a><!-- control-next end-->
+
+</div><!-- {{chart_id}}_carousel div end -->
+{% endmacro %}

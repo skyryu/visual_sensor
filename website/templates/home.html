@@ -1,0 +1,80 @@
+{% extends "b4template.html" %}
+{% from "sidebar_macros.html" import render_sidebar %}
+{% from "3d_model_macros.html" import render_3d_model %}
+{% from "datatables_macros.html" import render_datatables %}
+{% from "echarts_carousel_macros.html" import render_echarts_carousel %}
+{% block title %}VS home{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',
+        filename='DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/testEcharts.css')}}">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">主页</a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li id="_navbar_model_show_anchor" class="nav-item active">
+                    <a class="nav-link" href="#">模型显示</a>
+                </li>
+                <li id="_navbar_statistics_show_anchor" class="nav-item">
+                    <a class="nav-link" href="#">数据显示</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="搜索">
+                <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">搜索</button>
+            </form>
+        </div><!-- collapse end-->
+    </nav><!-- navbar div end-->
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pl-0">
+        <div class="_wrapper row flex-nowrap">
+            <!-- _sidebar div start, _sidebar is the first col in wrapper -->
+            <div class="_sidebar col-6 bg-dark pr-0">
+                {{ render_sidebar() }}
+            </div><!-- _sidebar div end -->
+
+            <!-- _main div start, _main is the second col in wrapper-->
+            <div class="_main col">
+                <div class="_visual row flex-xl-nowrap">
+                    <div class="_model_or_form col-12 col-xl-7 p-1 m-0">
+                        <div class="_3d_model w-100 h-100">
+                            {{ render_3d_model() }}
+                        </div><!--_3d_model div end-->
+                        <div class="_datatables w-100 h-100 d-none">
+                            {{ render_datatables('example') }}
+                        </div><!-- _datatables div end -->
+                    </div><!-- _model_or_form div end -->
+
+                    <div class="_echarts col-12 col-xl-5 p-0 pr-1 m-0">
+                        {{ render_echarts_carousel('pieChart1') }}
+                        {{ render_echarts_carousel('lineChart1') }}
+                        {{ render_echarts_carousel('pieChart3') }}
+                    </div><!--_echarts div end-->
+                </div><!-- _visual row end -->
+            </div><!-- _main div end -->
+        </div><!-- wrapper row end-->
+
+    </div><!-- container end-->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block OptionalJS %}
+    {{ super() }}
+    <script src="{{url_for('static', filename='js/vendor/echarts.common.min.js')}}"></script>
+    <script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/echarts_draw.js')}}"></script>
+    <script src="{{url_for('static', filename='js/datatables_draw.js')}}"></script>
+    <script src="{{url_for('static', filename='js/draw_components.js')}}"></script>
+{% endblock %}

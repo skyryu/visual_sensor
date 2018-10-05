@@ -10,7 +10,7 @@ from website import db
 @main.route('/index')
 def index():
     #return render_template('index.html')
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('home.main'))
 
 @main.app_errorhandler(403)
 def permission_deny(e):
