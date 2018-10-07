@@ -21,12 +21,7 @@ from fab_tools import auth_tools as auth
 
 @task
 def test(c):
-    #auth.create_role_and_group(c)
-    git.update_current_release(c)
-    auth.remove_role_and_group(c)
-    
-    sup.d_start(c)
-    nginx.reload(c)
+    auth.create_role_and_group(c)
     '''
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
     c.run('source /etc/anaconda/bin/activate')
