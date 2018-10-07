@@ -69,6 +69,7 @@ def update_dist(c):
     conda.update_virtual_env(c)
     conda.update_deploy_env(c)
     bower.update_bower_pkg(c)
+    auth.chmod_of_dist_repo(c)
     db.upgrade(c)
     auth.chmod_of_dist_repo(c)
     sup.d_start(c)
