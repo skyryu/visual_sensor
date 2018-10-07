@@ -6,7 +6,7 @@ from invoke import Responder
 
 Config={
     #aut
-    'website_client_role':'www_client',
+    'website_client_role':'www',
     'website_client_group':'www',
 
     #nginx
