@@ -46,7 +46,7 @@ def restart(c):
     info('Restart supervisor fcgi program')
     c.run(_source_env_str
           +' && supervisorctl'+_use_config_str+' stop all'
-          +' && supervisorctl'+_use_config_str+' start all'
+          +' && supervisorctl'+_use_config_str+' update'
           , echo=True)
 
     result = c.run(_source_env_str+' && supervisorctl'
