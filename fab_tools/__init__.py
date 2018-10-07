@@ -5,13 +5,17 @@ for server deployment, initialization and updating.
 from invoke import Responder
 
 Config={
+    #aut
+    'website_client_role':'www_client',
+    'website_client_group':'www',
+
     #nginx
     'nginx_conf_file_srv_path':'/etc/nginx',
     'nginx_conf_file_repo_path':'config/nginx.conf',
 
     #supervisor
-    'pname':'flask_app',
-    'supervisor_config_file_name':'supervisord.conf',
+    #'pname':'flask_app',
+    'supervisor_config_file_path':'config/supervisord.conf',
 
     #AWS EC2 config
     'ec2_usrname':'ec2-user',

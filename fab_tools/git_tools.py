@@ -1,7 +1,7 @@
 '''
 git fab tools
 '''
-import datetime
+from datetime import datetime
 from fab_tools import info
 from fab_tools import Config
 from fabric import task
