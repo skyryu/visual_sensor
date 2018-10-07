@@ -21,9 +21,9 @@ from fab_tools import auth_tools as auth
 
 @task
 def test(c):
-    auth.create_role_and_group(c)
+    #auth.create_role_and_group(c)
     git.update_current_release(c)
-    sup.start(c)
+    sup.d_start(c)
     nginx.reload(c)
     '''
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
@@ -58,7 +58,7 @@ def init_dist(c):
     conda.create_deploy_env(c)
     bower.bower_pkg_install(c)
     auth.chmod_of_dist_repo(c)
-    sup.start(c)
+    sup.d_start(c)
     nginx.start(c)
 
 @task
@@ -74,5 +74,5 @@ def update_dist(c):
     bower.update_bower_pkg(c)
     auth.chmod_of_dist_repo(c)
     db.upgrade(c)
-    sup.restart(c)
+    sup.d_start(c)
     nginx.reload(c)

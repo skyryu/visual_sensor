@@ -41,7 +41,7 @@ Config={
 
     #git repo config
     'git_repo_dist_prod_link': '/srv/dist/site/prod',
-    'git_repo_dist_release_path': '/srv/dist/site/{0}',
+    'git_repo_dist_release_path': '/srv/dist/site{0}',
     'github_repo_url':'git@github.com:skyryu/visual_sensor.git',
 
     #bower config

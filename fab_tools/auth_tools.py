@@ -37,4 +37,4 @@ def create_role_and_group(c):
 def chmod_of_dist_repo(c):
     c.sudo('chown -R '+Config['website_client_role']
            +':'+Config['website_client_group']
-           +' '+Config['git_repo_dist_prod_link'])
+           +' '+Config['git_repo_dist_release_path'].format(''), echo=True)
