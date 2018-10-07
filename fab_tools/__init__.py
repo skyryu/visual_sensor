@@ -5,13 +5,18 @@ for server deployment, initialization and updating.
 from invoke import Responder
 
 Config={
+    #aut
+    'website_client_role':'www',
+    'website_client_group':'www',
+
     #nginx
     'nginx_conf_file_srv_path':'/etc/nginx',
     'nginx_conf_file_repo_path':'config/nginx.conf',
 
     #supervisor
-    'pname':'flask_app',
-    'supervisor_config_file_name':'supervisord.conf',
+    #'pname':'flask_app',
+    'supervisor_config_file_path':'config/supervisord.conf',
+    'fastcgi_sock':'/tmp/flask_fastcgi.sock',
 
     #AWS EC2 config
     'ec2_usrname':'ec2-user',
@@ -36,7 +41,7 @@ Config={
 
     #git repo config
     'git_repo_dist_prod_link': '/srv/dist/site/prod',
-    'git_repo_dist_release_path': '/srv/dist/site/{0}',
+    'git_repo_dist_release_path': '/srv/dist/site{0}',
     'github_repo_url':'git@github.com:skyryu/visual_sensor.git',
 
     #bower config

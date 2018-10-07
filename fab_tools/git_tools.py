@@ -1,19 +1,30 @@
 '''
 git fab tools
 '''
-import datetime
+from datetime import datetime
 from fab_tools import info
 from fab_tools import Config
+from fab_tools import Respond
 from fabric import task
 
 @task
 def update_current_release(c):
     info('Start updating current prod release')
+    #here we temperarily set the owner to ec2 user for git access
+    c.sudo('chown -R '+Config['ec2_usrname']+' '
+           +Config['git_repo_dist_release_path'].format(''), echo=True)
+    #later on the auth tool will set the owner back to www_client
     c.run('cd '+Config['git_repo_dist_prod_link']+' && git pull', echo=True)
 
 def create_new_release(c):
+    info('Start disting new rlease version')
+    #here we temperarily set the owner to ec2 user for git access
+    c.sudo('chown -R '+Config['ec2_usrname']+' '
+           +Config['git_repo_dist_release_path'].format(''), echo=True)
+    #later on the auth tool will set the owner back to www_client
+
     new_release = Config['git_repo_dist_release_path'].format(
-                    datetime.utcnow().strftime('%y%m%d_%H:%M:%S')
+                    '/'+datetime.utcnow().strftime('%y%m%d_%H:%M:%S')
                   )
     if c.run('test -d '+new_release, warn=True).failed:
         c.sudo('mkdir -p '+new_release)
@@ -25,7 +36,6 @@ def create_new_release(c):
 
     c.sudo('rm -f '+Config['git_repo_dist_prod_link'])
     c.sudo('ln -s {0} {1}'.format(new_release, Config['git_repo_dist_prod_link']))
-    c.sudo('chown -R '+Config['ec2_usrname']+' '+Config['git_repo_dist_prod_link'])
 
 '''
 @task
