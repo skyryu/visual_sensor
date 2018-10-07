@@ -10,7 +10,7 @@ Config={
     'nginx_conf_file_repo_path':'config/nginx.conf',
 
     #supervisor
-    'pname':'dark_soul',
+    'pname':'flask_app',
     'supervisor_config_file_name':'supervisord.conf',
 
     #AWS EC2 config
@@ -22,11 +22,11 @@ Config={
     'conda_version':'Anaconda2-5.2.0-Linux-x86_64.sh',
 
     #conda env config
-    'env_name':'flask_py3',
-    'env_dir_path':'/srv/dist/conda_env/flask_py3',
-    'deploy_env_path':'/srv/dist/conda_env/deploy_py2',
-    'deploy_env_yaml_path':'/srv/dist/site/deploy_env.yaml',
-    'env_yaml_path':'/srv/dist/site/environment.yaml',
+    #'env_name':'flask_py3', the -n will override the -p option
+    'env_dir_path':'/srv/dist/site/prod/conda_env/flask_py3',
+    'deploy_env_path':'/srv/dist/site/prod/conda_env/deploy_py2',
+    'deploy_env_yaml_path':'/srv/dist/site/prod/deploy_env.yaml',
+    'env_yaml_path':'/srv/dist/site/prod/environment.yaml',
     'pip_conf_path':'~/.pip/pip.conf',
 
     #git config
@@ -35,11 +35,12 @@ Config={
     'git_ssh_key_path': "/home/ec2-user/.ssh/id_rsa",
 
     #git repo config
-    'git_repo_dist_path': '/srv/dist/site',
-    'github_repo_url':'git@github.com:skyryu/learn_flask.git',
+    'git_repo_dist_prod_link': '/srv/dist/site/prod',
+    'git_repo_dist_release_path': '/srv/dist/site/{0}',
+    'github_repo_url':'git@github.com:skyryu/visual_sensor.git',
 
     #bower config
-    'bower_path':'/srv/dist/site/dark_soul/static',
+    'bower_path':'/srv/dist/site/prod/website/static',
 }
 
 

@@ -7,7 +7,7 @@ from fab_tools import info
 from fab_tools import Config
 from fabric import task
 
-_conf_repo_path = Config['git_repo_dist_path']+'/'\
+_conf_repo_path = Config['git_repo_dist_prod_link']+'/'\
                  +Config['nginx_conf_file_repo_path']
 _conf_srv_path = Config['nginx_conf_file_srv_path']
 

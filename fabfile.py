@@ -42,8 +42,8 @@ def init_dist(c):
     First time code pulling for a new server
     '''
     if not confirm('make sure you have run deploy-dist'):
-        raise Exit('aborting dist initialization')
-    git.git_clone(c)
+        raise Exit('dist initialization abort')
+    git.create_new_release(c)
     conda.create_virtual_env(c)
     conda.create_deploy_env(c)
     bower.bower_pkg_install(c)

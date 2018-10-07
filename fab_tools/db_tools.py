@@ -12,7 +12,7 @@ from fabric import task
 def upgrade(c):
     info('Start upgrade SQLAlchemy DB')
     c.run('source /etc/anaconda/bin/activate '+Config['env_dir_path']
-          +' && cd '+Config['git_repo_dist_path']
+          +' && cd '+Config['git_repo_dist_prod_link']
           +' && python manage.py db upgrade', echo=True)
 
 

@@ -16,7 +16,7 @@ from fabric import task
 
 _source_env_str = 'source '+Config['conda_install_path']\
                   +'/bin/activate '+Config['deploy_env_path']
-_use_config_str = ' -c '+Config['git_repo_dist_path']\
+_use_config_str = ' -c '+Config['git_repo_dist_prod_link']\
                   +'/'+Config['supervisor_config_file_name']
 
 @task

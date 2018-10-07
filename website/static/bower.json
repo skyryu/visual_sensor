@@ -1,10 +1,10 @@
 {
-  "name": "dark_soul",
-  "homepage": "https://github.com/skyryu/learn_flask",
+  "name": "website",
+  "homepage": "https://github.com/skyryu/visual_sensor",
   "authors": [
     "skyryu <skyryu@126.com>"
   ],
-  "description": "js lib maintainer for dark_soul proj",
+  "description": "js lib maintainer for visual sensor proj",
   "main": "",
   "license": "MIT",
   "ignore": [
@@ -15,6 +15,5 @@
     "tests"
   ],
   "dependencies": {
-    "select2": "^4.0.5"
   }
 }
