@@ -23,7 +23,7 @@ from fab_tools import auth_tools as auth
 def test(c):
     auth.create_role_and_group(c)
     git.update_current_release(c)
-    sup.restart(c)
+    sup.start(c)
     nginx.reload(c)
     '''
     c.run('export PATH="$PATH:/etc/anaconda/bin"')

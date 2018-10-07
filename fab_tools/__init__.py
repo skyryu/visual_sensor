@@ -16,6 +16,7 @@ Config={
     #supervisor
     #'pname':'flask_app',
     'supervisor_config_file_path':'config/supervisord.conf',
+    'fastcgi_sock':'/tmp/flask_fastcgi.sock',
 
     #AWS EC2 config
     'ec2_usrname':'ec2-user',

@@ -39,6 +39,9 @@ def start(c):
 
         result = c.run(_source_env_str+' && supervisorctl'
                        +_use_config_str+' status', hide='out')
+        c.sudo('chown -R '+Config['website_client_role']
+               +':'+Config['website_client_grup']
+               +' '+Config['fastcgi_sock'])
         info('Supervisord started:\n'+result.stdout.strip())
 
 @task
