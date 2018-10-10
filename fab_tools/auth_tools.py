@@ -34,7 +34,14 @@ def create_role_and_group(c):
                +' -g '+Config['website_client_group'], echo=True)
 
 @task
-def chmod_of_dist_repo(c):
+def chown_of_dist_repo(c):
+    info('Start chown of related folders')
     c.sudo('chown -R '+Config['website_client_role']
+           +':'+Config['website_client_group']
+           +' '+Config['git_repo_dist_release_path'].format(''), echo=True)
+
+    #when content is very large, nginx will use buffer for uploading and
+    #it requires the access role
+    c.sudo('chown -R '+Config['nginx_tmp_buffer']
            +':'+Config['website_client_group']
            +' '+Config['git_repo_dist_release_path'].format(''), echo=True)

@@ -2,30 +2,55 @@ test {
     color: #c23531;
 }
 
-/* _sidebar text color (in)active*/
+/* navbar switcher button style */
+.navbar ._navbar_switcher a {
+    /*box-shadow: none !important;*/
+    border-radius: 1rem;
+}
+.navbar #_navbar_model_show_anchor {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.navbar #_navbar_statistics_show_anchor {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* _sidebar basic*/
 ._wrapper ._sidebar {
     max-width: 200px;
     height: calc(100vh - 4rem);
     overflow-y: auto;
+    transition-duration: 1s;
 }
 
+/*sidebar collapse animation, toggled by sidebarToggleIcon in navbar*/
+/*the transition-duration in $(._wrapper ._sidebar) also matters */
+._wrapper ._sidebar .list-group{
+    transition-duration: 1s;
+}
+._wrapper._sidebar_collapse ._sidebar .list-group {
+    transform: translateX(-200%);
+}
+._wrapper._sidebar_collapse ._sidebar {
+    transform: translateX(-200%);
+    flex: 0 0 0%;
+}
+
+/* _sidebar text color (in)active*/
 ._wrapper ._sidebar a {
 
     color: #999999;
 }
-
 ._wrapper ._sidebar a:hover {
     color: #fff;
 }
-
 ._wrapper ._sidebar ._inner{
     background: #000;
 }
-
 ._wrapper ._sidebar ._inner:hover {
     background: #082f31;
 }
-
 ._wrapper ._sidebar ._outer {
     background: #343a40;
 }
@@ -43,11 +68,9 @@ test {
 ._visual {
     height: calc(100vh - 5rem);
 }
-
 ._visual button {
     box-shadow: none !important;
 }
-
 ._model_or_form {
     min-width: 40rem;
     min-height: 40rem;

@@ -3,6 +3,16 @@
  * define how to display the carousels themselves and the echarts inside each carousel
  * applying to $(._wrapper ._main ._visual ._echarts) 
  */
+var pieChart1;
+var pieChart3;
+var lineChart1;
+
+echarts_resize = function () {
+    pieChart1.resize();
+    lineChart1.resize();
+    myChart3.resize();
+};
+
 echarts_draw = function() {
 
     //3) Echarts js
@@ -213,20 +223,22 @@ echarts_draw = function() {
     };
 
     // 基于准备好的dom，初始化echarts实例
-    var pieChart1 = echarts.init(document.getElementById('pieChart1'), 'dark');
-    var lineChart1 = echarts.init(document.getElementById('lineChart1'));
-    var myChart3 = echarts.init(document.getElementById('pieChart3'));
+    pieChart1 = echarts.init(document.getElementById('pieChart1'), 'dark');
+    lineChart1 = echarts.init(document.getElementById('lineChart1'));
+    myChart3 = echarts.init(document.getElementById('pieChart3'));
 
     // 使用刚指定的配置项和数据显示图表。
     pieChart1.setOption(pieChartOption);
     lineChart1.setOption(lineChartOption);
     myChart3.setOption(pieChartOption);
 
-    window.onresize = function () {
+    window.onresize = echarts_resize();
+    
+    /*function () {
         pieChart1.resize();
         lineChart1.resize();
         myChart3.resize();
-    };
+    };*/
 
     setInterval(function () {
         for (var i = 0; i < 5; i++) {

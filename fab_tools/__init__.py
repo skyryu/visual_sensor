@@ -12,6 +12,7 @@ Config={
     #nginx
     'nginx_conf_file_srv_path':'/etc/nginx',
     'nginx_conf_file_repo_path':'config/nginx.conf',
+    'nginx_tmp_buffer':'/var/lib/nginx', #this is the buffer place for large content 
 
     #supervisor
     #'pname':'flask_app',

@@ -13,24 +13,25 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-dark bg-info pl-1">
+        <a id='sidebarToggleIcon' class="btn btn-info">
+            <span class="navbar-toggler-icon"></span>
+        </a><!-- sidebar toggle icon end -->
+
+        <div class="_navbar_switcher container">
+            <div class="row">
+                <a id="_navbar_model_show_anchor"
+                   class="btn btn-sm btn-info border-0 shadow active"
+                   href="#" role="button">模型显示</a>
+                <a id="_navbar_statistics_show_anchor"
+                   class="btn btn-sm btn-info border-0 shadow-sm"
+                   href="#" role="button">数据显示</a>
+            </div>
+        </div>
+
         <a class="navbar-brand" href="#">主页</a>
-        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li id="_navbar_model_show_anchor" class="nav-item active">
-                    <a class="nav-link" href="#">模型显示</a>
-                </li>
-                <li id="_navbar_statistics_show_anchor" class="nav-item">
-                    <a class="nav-link" href="#">数据显示</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="搜索">
-                <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">搜索</button>
-            </form>
-        </div><!-- collapse end-->
+
+
     </nav><!-- navbar div end-->
 {% endblock %}
 
@@ -38,7 +39,7 @@
     <div class="container-fluid pl-0">
         <div class="_wrapper row flex-nowrap">
             <!-- _sidebar div start, _sidebar is the first col in wrapper -->
-            <div class="_sidebar col-6 bg-dark pr-0">
+            <div id='collapsibleSideBarId' class="_sidebar col-6 bg-dark pr-0">
                 {{ render_sidebar() }}
             </div><!-- _sidebar div end -->
 
