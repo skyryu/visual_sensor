@@ -42,6 +42,6 @@ def chown_of_dist_repo(c):
 
     #when content is very large, nginx will use buffer for uploading and
     #it requires the access role
-    c.sudo('chown -R '+Config['nginx_tmp_buffer']
+    c.sudo('chown -R '+Config['website_client_role']
            +':'+Config['website_client_group']
-           +' '+Config['git_repo_dist_release_path'].format(''), echo=True)
+           +' '+Config['nginx_tmp_buffer'].format(''), echo=True)
