@@ -3,7 +3,7 @@ Views for home page
 '''
 
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from . import home
 from website import db

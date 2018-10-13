@@ -3,17 +3,21 @@ test {
 }
 
 /* navbar switcher button style */
-.navbar ._navbar_switcher a {
+nav ._navbar_switcher a {
     /*box-shadow: none !important;*/
     border-radius: 1rem;
 }
-.navbar #_navbar_model_show_anchor {
+nav #_navbar_model_show_anchor {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.navbar #_navbar_statistics_show_anchor {
+nav #_navbar_statistics_show_anchor {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+nav .dropdown-menu {
+    min-width: 8rem;
 }
 
 /* _sidebar basic*/
@@ -26,10 +30,8 @@ test {
 
 /*sidebar collapse animation, toggled by sidebarToggleIcon in navbar*/
 /*the transition-duration in $(._wrapper ._sidebar) also matters */
-._wrapper ._sidebar .list-group{
-    transition-duration: 1s;
-}
 ._wrapper._sidebar_collapse ._sidebar .list-group {
+    transition-duration: 1s;
     transform: translateX(-200%);
 }
 ._wrapper._sidebar_collapse ._sidebar {
