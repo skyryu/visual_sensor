@@ -232,14 +232,6 @@ echarts_draw = function() {
     lineChart1.setOption(lineChartOption);
     myChart3.setOption(pieChartOption);
 
-    window.onresize = echarts_resize();
-    
-    /*function () {
-        pieChart1.resize();
-        lineChart1.resize();
-        myChart3.resize();
-    };*/
-
     setInterval(function () {
         for (var i = 0; i < 5; i++) {
             data.shift();

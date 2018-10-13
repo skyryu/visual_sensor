@@ -46,4 +46,8 @@ $(function () {
 
     datatables_draw();
     echarts_draw();
+
+    $('._echarts').resize(function(){
+        echarts_resize();
+    });
 });
