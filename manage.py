@@ -2,6 +2,7 @@
 
 from website import app, db
 from website.auth.auth_models import User  
+from website.home.home_models import SensorData  
 from flask_script import Manager, prompt_bool
 from flask_migrate import Migrate, MigrateCommand
 
@@ -23,6 +24,29 @@ def dropdb():
     if prompt_bool('Are you sure you want to lose all your data'):
         db.drop_all()
         print('Dropped the database')
+
+@manager.command
+def qa_realtime_data_test():
+    db.session.query(SensorData).delete()
+    print('delete all sensor data')
+
+    from datetime import datetime
+    from time import sleep
+    from random import Random
+    rand = Random()
+    rand.seed()
+
+    n = 0
+    while n < 500:
+        db.session.add(SensorData(sensor_name='sensorA',
+                                  component_name='compA',
+                                  data_type='typeA',
+                                  value=rand.uniform(1,100),
+                                  time_stamp=datetime.utcnow()
+                                 ))
+        db.session.commit()
+        sleep(1)
+        
 
 if __name__ == '__main__':
     manager.run()

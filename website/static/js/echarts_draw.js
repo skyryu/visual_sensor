@@ -6,6 +6,31 @@
 var pieChart1;
 var pieChart3;
 var lineChart1;
+var echarts_data = [];
+
+function echartsRandomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+        ]
+    }
+}
+
+function echartsSetInterval() {
+    for (var i = 0; i < 5; i++) {
+        echarts_data.shift();
+        echarts_data.push(echartsRandomData());
+    }
+    lineChart1.setOption({
+        series: [{
+            data: echarts_data
+        }]
+    });
+}
 
 echarts_resize = function () {
     pieChart1.resize();
@@ -21,26 +46,11 @@ echarts_draw = function() {
         interval: false
     });
 
-
-    //line chart functions begin
-    function randomData() {
-        now = new Date(+now + oneDay);
-        value = value + Math.random() * 21 - 10;
-        return {
-            name: now.toString(),
-            value: [
-                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                Math.round(value)
-            ]
-        }
-    }
-    
-    var data = [];
     var now = +new Date(1997, 9, 3);
     var oneDay = 24 * 3600 * 1000;
     var value = Math.random() * 1000;
     for (var i = 0; i < 1000; i++) {
-        data.push(randomData());
+        echarts_data.push(randomData());
     }
 
     // 指定图表的配置项和数据
@@ -78,7 +88,7 @@ echarts_draw = function() {
             type: 'line',
             showSymbol: false,
             hoverAnimation: false,
-            data: data
+            data: echarts_ata
         }]
     };
 
@@ -232,15 +242,5 @@ echarts_draw = function() {
     lineChart1.setOption(lineChartOption);
     myChart3.setOption(pieChartOption);
 
-    setInterval(function () {
-        for (var i = 0; i < 5; i++) {
-            data.shift();
-            data.push(randomData());
-        }
-        lineChart1.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 1000);
+ 
 };

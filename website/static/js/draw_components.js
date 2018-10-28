@@ -50,4 +50,9 @@ $(function () {
     $('._echarts').resize(function(){
         echarts_resize();
     });
+
+    //4) global
+    setInterval(function () {
+        echartsSetInterval();
+    }, 1000);
 });
