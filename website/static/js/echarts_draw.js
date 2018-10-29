@@ -95,7 +95,7 @@ echarts_draw = function() {
     var lineChartOption1 = {
         backgroundColor: '#f5f5f5',
         title: {
-            text: "20180923"
+            text: "测斜仪1(20180923)"
         },
         /*dataset: {
             dimensions: ['now', 'R1', 'R2'],
