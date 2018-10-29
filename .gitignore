@@ -11,3 +11,6 @@ website/__pycache__/*
 .*
 !.gitignore
 *.pyc
+
+### src
+#website/static/src/*

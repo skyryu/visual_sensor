@@ -1,8 +1,55 @@
 $(function () {
     //1) Sidebar js
+    /*
     $('._wrapper ._sidebar ._inner').on('click', function () {
         alert('aaa');
     });
+    */
+
+    var optionSeries = function(lineChartData){
+                        return [{
+                                    name: 'R1',
+                                    data: getR1(lineChartData)
+                                },{
+                                    name: 'R2',
+                                    data: getR2(lineChartData)
+                                }];
+                       };
+
+
+    $('._wrapper ._sidebar ._one').on('click', function(){
+        //1) update echarts
+        lineChart1.setOption({
+            title: { text: "测斜仪1(20180923)"},
+            series: optionSeries(lineChartData1) 
+        });
+        //2) update datatables
+        table.rows().remove();
+        table.rows.add(lineChartData1).draw();
+    });
+
+    $('._wrapper ._sidebar ._two').on('click', function(){
+        //1) update echarts
+        lineChart1.setOption({
+            title: { text: "测斜仪2(20180923)"},
+            series: optionSeries(lineChartData2)
+        });
+        //2) update datatables
+        table.rows().remove();
+        table.rows.add(lineChartData2).draw();
+    });
+
+    $('._wrapper ._sidebar ._three').on('click', function(){
+        //1) update echarts
+        lineChart1.setOption({
+            title: { text: "测斜仪3(20180923)"},
+            series: optionSeries(lineChartData3)
+        });
+        //2) update datatables
+        table.rows().remove();
+        table.rows.add(lineChartData3).draw();
+    });
+
 
     $('.btn-toggle-sidebar').on('click', function () {
         $('.wrapper').toggleClass('sidebar-collapse');

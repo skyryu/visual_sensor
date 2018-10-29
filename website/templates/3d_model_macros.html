@@ -1,5 +1,6 @@
 {% macro render_3d_model() %}
 <div class="card w-100 h-100">
+    {#
     <!-- use card header to encapsulate control buttons -->
     <div class="card-header p-1 d-flex justify-content-center">
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -32,9 +33,14 @@
             </div>
         </div><!-- btn-toolbar div end -->
     </div><!-- card-header end-->
+    #}
 
     <div class="card-body">
-        <p class="card-text">show 3d model here</p>
+        {#<p class="card-text">show 3d model here</p>#}
+        <video src="{{url_for('static', filename='src/demo.mp4')}}"
+               autoplay loop width="100%">
+        您的浏览器不支持video标签
+        </video>
     </div><!-- card body end -->
 
 </div><!-- card of _3d_model end-->

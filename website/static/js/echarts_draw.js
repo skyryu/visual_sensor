@@ -3,14 +3,84 @@
  * define how to display the carousels themselves and the echarts inside each carousel
  * applying to $(._wrapper ._main ._visual ._echarts) 
  */
-var pieChart1;
-var pieChart3;
 var lineChart1;
+var lineChart2;
+var lineChartData;
+var lineChartData1 = [
+    {now:'20180923 00:00:00',R1:-9.176513, R2:18},
+    {now:'20180923 01:00:00',R1:-9.154629, R2:18},
+    {now:'20180923 02:00:00',R1:-9.067082, R2:18.3},
+    {now:'20180923 03:00:00',R1:-9.08897, R2:18.3},
+    {now:'20180923 04:00:00',R1:-9.110857, R2:18.4},
+    {now:'20180923 05:00:00',R1:-9.023303, R2:18.7},
+    {now:'20180923 06:00:00',R1:-9.110857, R2:18.8},
+    {now:'20180923 07:00:00',R1:-9.067082, R2:18.9},
+    {now:'20180923 08:00:00',R1:-9.935736, R2:20.1},
+    {now:'20180923 09:00:00',R1:-9.891948, R2:21.2},
+    {now:'20180923 10:00:00',R1:-9.067082, R2:22.5},
+    {now:'20180923 11:00:00',R1:-9.045193, R2:26},
+    {now:'20180923 12:00:00',R1:-9.067082, R2:27.9}
+]
+
+var lineChartData2 = [
+    {now:'20180923 00:00:00',R1:-9.401031, R2:18},
+    {now:'20180923 01:00:00',R1:-9.401031, R2:18.1},
+    {now:'20180923 02:00:00',R1:-9.29583, R2:18.3},
+    {now:'20180923 03:00:00',R1:-9.422069, R2:18.3},
+    {now:'20180923 04:00:00',R1:-9.337913, R2:18.4},
+    {now:'20180923 05:00:00',R1:-9.443106, R2:18.7},
+    {now:'20180923 06:00:00',R1:-9.29583, R2:18.8},
+    {now:'20180923 07:00:00',R1:-9.379992, R2:18.9},
+    {now:'20180923 08:00:00',R1:-9.358953, R2:20.1},
+    {now:'20180923 09:00:00',R1:-9.274787, R2:21.1},
+    {now:'20180923 10:00:00',R1:-9.337913, R2:22.7},
+    {now:'20180923 11:00:00',R1:-9.148513, R2:26.3},
+    {now:'20180923 12:00:00',R1:-9.274787, R2:28.2}
+]
+
+var lineChartData3 = [
+    {now:'20180923 00:00:00',R1:-10.326817, R2:17.9},
+    {now:'20180923 01:00:00',R1:-10.196709, R2:18},
+    {now:'20180923 02:00:00',R1:-10.175022, R2:18.4},
+    {now:'20180923 03:00:00',R1:-10.196709, R2:18.4},
+    {now:'20180923 04:00:00',R1:-10.326817, R2:18.5},
+    {now:'20180923 05:00:00',R1:-10.153333, R2:18.8},
+    {now:'20180923 06:00:00',R1:-10.283451, R2:18.9},
+    {now:'20180923 07:00:00',R1:-10.044879, R2:19},
+    {now:'20180923 08:00:00',R1:-10.109954, R2:20.4},
+    {now:'20180923 09:00:00',R1:-10.218396, R2:21.4},
+    {now:'20180923 10:00:00',R1:-10.001491, R2:23},
+    {now:'20180923 11:00:00',R1:-10.979796, R2:27.1},
+    {now:'20180923 12:00:00',R1:-10.893008, R2:28.9}
+]
+
+var getNow = function(list) {
+    var ret = [];
+    for(var i=0;i<list.length;++i){
+        ret.push(list[i].now.split(" ")[1]);
+    }
+    return ret;
+}
+
+var getR1 = function(list) {
+    var ret = [];
+    for(var i=0;i<list.length;++i){
+        ret.push(list[i].R1);
+    }
+    return ret;
+}
+
+var getR2 = function(list) {
+    var ret = [];
+    for(var i=0;i<list.length;++i){
+        ret.push(list[i].R2);
+    }
+    return ret;
+}
 
 echarts_resize = function () {
-    pieChart1.resize();
     lineChart1.resize();
-    myChart3.resize();
+    lineChart2.resize();
 };
 
 echarts_draw = function() {
@@ -21,226 +91,125 @@ echarts_draw = function() {
         interval: false
     });
 
-
-    //line chart functions begin
-    function randomData() {
-        now = new Date(+now + oneDay);
-        value = value + Math.random() * 21 - 10;
-        return {
-            name: now.toString(),
-            value: [
-                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                Math.round(value)
-            ]
-        }
-    }
-    
-    var data = [];
-    var now = +new Date(1997, 9, 3);
-    var oneDay = 24 * 3600 * 1000;
-    var value = Math.random() * 1000;
-    for (var i = 0; i < 1000; i++) {
-        data.push(randomData());
-    }
-
     // 指定图表的配置项和数据
-    var lineChartOption = {
+    var lineChartOption1 = {
         backgroundColor: '#f5f5f5',
         title: {
-            text: '动态数据 + 时间坐标轴'
+            text: "20180923"
+        },
+        /*dataset: {
+            dimensions: ['now', 'R1', 'R2'],
+            source: lineChartData1
+        },*/
+        legend: {
+            data: ['R1', 'R2']
         },
         tooltip: {
             trigger: 'axis',
-            formatter: function (params) {
-                params = params[0];
-                var date = new Date(params.name);
-                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-            },
             axisPointer: {
-                animation: false
+                type: 'cross'
             }
+        },
+        grid: {
+            right:'10%',
+            left:'10%'
         },
         xAxis: {
-            type: 'time',
-            splitLine: {
-                show: true
-            }
+            type: 'category',
+            data: getNow(lineChartData1) 
         },
-        yAxis: {
-            type: 'value',
-            boundaryGap: [0, '20%'],
-            splitLine: {
-                show: false
-            }
-        },
-        series: [{
-            name: '模拟数据',
-            type: 'line',
-            showSymbol: false,
-            hoverAnimation: false,
-            data: data
-        }]
-    };
-
-    pieChartOption = {
-        title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#ccc'
-            }
-        },
-
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-
-        series: [{
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '50%'],
-            data: [{
-                    value: 335,
-                    name: '直接访问'
-                },
-                {
-                    value: 310,
-                    name: '邮件营销'
-                },
-                {
-                    value: 274,
-                    name: '联盟广告'
-                },
-                {
-                    value: 235,
-                    name: '视频广告'
-                },
-                {
-                    value: 400,
-                    name: '搜索引擎'
-                }
-            ].sort(function (a, b) {
-                return a.value - b.value;
-            }),
-            roseType: 'radius',
-            label: {
-                normal: {
-                    textStyle: {
-                        color:'#ccc' 
-                    }
-                }
-            },
-            itemStyle: {
-                normal: {
-                    //color: '#c23531',
-                    shadowBlur: 200,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            },
-
-            animationType: 'scale',
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) {
-                return Math.random() * 200;
-            }
-        }]
-    };
-
-    samplePieChartOption={
-        backgroundColor: '#2c343c',
-    
-        title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#ccc'
-            }
-        },
-    
-        tooltip : {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-    
-        visualMap: {
-            show: true,
-            min: 80,
-            max: 600,
-            inRange: {
-                colorLightness: [0, 1]
-            }
-        },
-        series : [
+        yAxis: [
             {
-                name:'访问来源',
-                type:'pie',
-                radius : '55%',
-                center: ['50%', '50%'],
-                data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:274, name:'联盟广告'},
-                    {value:235, name:'视频广告'},
-                    {value:400, name:'搜索引擎'}
-                ].sort(function (a, b) { return a.value - b.value; }),
-                roseType: 'radius',
-                label: {
-                    normal: {
-                        textStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        lineStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
-                        },
-                        smooth: 0.2,
-                        length: 10,
-                        length2: 20
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        color: '#c23531',
-                        shadowBlur: 200,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                },
-    
-                animationType: 'scale',
-                animationEasing: 'elasticOut',
-                animationDelay: function (idx) {
-                    return Math.random() * 200;
+                type: 'value',
+                name: 'R1',
+                min: -15,
+                max: 0,
+                position: 'left',
+                axisLabel:{
+                    formatter: '{value} mm'
+                }
+            },
+            {
+                type: 'value',
+                name: 'R2',
+                min: 0,
+                max: 30,
+                position: 'right',
+                axisLabel:{
+                    formatter: '{value} °C'
                 }
             }
+        ],
+        series: [{
+            name: 'R1',
+            type: 'line',
+        },{
+            name: 'R2',
+            type: 'line',
+            yAxisIndex: 1
+        }]
+    };
+
+    var lineChartOption2 = {
+        backgroundColor: '#f5f5f5',
+        title: {
+            text: "数据对比"
+        },
+        /*dataset: {
+            dimensions: ['now', 'R1', 'R2'],
+            source: lineChartData1
+        },*/
+        legend: {
+            data: ['1', '2', '3', '警戒1', '警戒2']
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        grid: {
+            right:'10%',
+            left:'10%'
+        },
+        xAxis: {
+            type: 'category',
+            data: getNow(lineChartData1) 
+        },
+        yAxis: [
+            {
+                type: 'value',
+                name: 'R2',
+                min: 0,
+                max: 40,
+                position: 'left',
+                axisLabel:{
+                    formatter: '{value} °C'
+                }
+            }
+        ],
+        series: [{name: '1', type: 'line', data:getR2(lineChartData1)},
+                 {name: '2', type: 'line', data:getR2(lineChartData2)},
+                 {name: '3', type: 'line', data:getR2(lineChartData3)},
+                 {name: '警戒1', type: 'line', data:[24,24,24,24,24,24,24,24,24,24,24,24,24]},
+                 {name: '警戒2', type: 'line', data:[30,30,30,30,30,30,30,30,30,30,30,30,30]}
         ]
     };
-
     // 基于准备好的dom，初始化echarts实例
-    pieChart1 = echarts.init(document.getElementById('pieChart1'), 'dark');
     lineChart1 = echarts.init(document.getElementById('lineChart1'));
-    myChart3 = echarts.init(document.getElementById('pieChart3'));
+    lineChart2 = echarts.init(document.getElementById('lineChart2'));
 
     // 使用刚指定的配置项和数据显示图表。
-    pieChart1.setOption(pieChartOption);
-    lineChart1.setOption(lineChartOption);
-    myChart3.setOption(pieChartOption);
+    lineChart1.setOption(lineChartOption1);
+    lineChart2.setOption(lineChartOption2);
 
-    setInterval(function () {
-        for (var i = 0; i < 5; i++) {
-            data.shift();
-            data.push(randomData());
-        }
-        lineChart1.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 1000);
+    lineChart1.setOption({
+        series: [{
+            name: 'R1',
+            data: getR1(lineChartData1)
+        },{
+            name: 'R2',
+            data: getR2(lineChartData1)
+        }]
+    });
 };

@@ -15,14 +15,16 @@ from fab_tools import bower_tools as bower
 from fab_tools import db_tools as db
 from fab_tools import nginx_tools as nginx
 from fab_tools import auth_tools as auth
+from fab_tools import ftp_tools as ftp
 
 
 
 
 @task
 def test(c):
-    auth.create_role_and_group(c)
+    ftp.tar_file(c)
     '''
+    auth.create_role_and_group(c)
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
     c.run('source /etc/anaconda/bin/activate')
     '''

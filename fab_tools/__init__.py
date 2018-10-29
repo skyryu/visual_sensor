@@ -5,7 +5,7 @@ for server deployment, initialization and updating.
 from invoke import Responder
 
 Config={
-    #aut
+    #auth
     'website_client_role':'www',
     'website_client_group':'www',
 
@@ -47,6 +47,10 @@ Config={
 
     #bower config
     'bower_path':'/srv/dist/site/prod/website/static',
+
+    #ftp
+    'local_src_path': '/Users/hongjin/Code/Py/git_repo/visual_sensor/website/static/src',
+    'src_path': 'website/static/src',
 }
 
 

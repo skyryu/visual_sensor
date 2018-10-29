@@ -69,6 +69,7 @@ nav .dropdown-menu {
 /*_visual card & btn style*/
 ._visual {
     height: calc(100vh - 5rem);
+    overflow-y: auto;
 }
 ._visual button {
     box-shadow: none !important;

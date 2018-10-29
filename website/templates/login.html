@@ -9,12 +9,14 @@
 
 {% block content %}
     <div class="container-fluid p-0" style="height:100vh">
-        <div class="jumbotron jumbotron-fluid h-100">
+        <div class="jumbotron jumbotron-fluid h-100"
+             style="background-image:url({{url_for('static', filename='src/background.jpg')}});
+                    background-size:100% 100%;">
             <div class="container d-flex justify-content-around">
                 <div class="_site_intro d-none d-xl-block">
-                    <h1 class="display-4">Fluid jumbotron</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its
-                        parent.</p>
+                    <h1 class="display-4">{#Fluid jumbotron#}</h1>
+                    <p class="lead">{#This is a modified jumbotron that occupies the entire horizontal space of its
+                        parent.#}</p>
                 </div><!-- _site_intro end -->
 
                 {% block content_card %}
@@ -22,8 +24,9 @@
                     <div class="_login_card card">
                         <div class="card-body">
                             <div class="_login_logo text-center">
-                                <img src="{{url_for('static', filename='src/logo.svg')}}" alt="site logo" class="m-2" style="height:4rem;width:4rem;">
-                                <p class="lead mb-2">Sign in to this site</p>
+                                <img src="{{url_for('static', filename='src/logo.png')}}" 
+                                     alt="site logo" class="m-2" style="height:6rem;width:6rem;">
+                                {#<p class="lead mb-2">Sign in to this site</p>#}
                             </div><!-- login logo div end -->
                             <form class="_login_form" method="post">
                                 {{form.hidden_tag()}}
