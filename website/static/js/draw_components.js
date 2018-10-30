@@ -5,6 +5,34 @@ $(function () {
         alert('aaa');
     });
     */
+    
+    var lastClick = 'model';
+
+    var setDisplayFlag = function(flag){
+        if(flag === "model"){
+            $('#_navbar_statistics_show_anchor').removeClass('active');
+            $('#_navbar_model_show_anchor').addClass('active');
+            $('._3d_model').removeClass('d-none');
+            $('._model_or_form, ._datatables, ._echarts1, ._echarts2, .carousel').addClass('d-none');
+        }else if(flag === 'device'){
+            $('#_navbar_statistics_show_anchor').addClass('active');
+            $('#_navbar_model_show_anchor').removeClass('active');
+            $('._model_or_form, ._datatables, .carousel').removeClass('d-none');
+            $('._3d_model').addClass('d-none');
+            $('#lineChart1_carousel, ._echarts1').removeClass('d-none');
+            $('#lineChart2_carousel, ._echarts2').addClass('d-none');
+            lineChart1.resize();
+        } else if(flag === 'warning'){
+            $('#_navbar_statistics_show_anchor').addClass('active');
+            $('#_navbar_model_show_anchor').removeClass('active');
+            $('._echarts, .carousel').removeClass('d-none');
+            $('._3d_model').addClass('d-none');
+            $('._model_or_form, ._datatables').addClass('d-none');
+            $('#lineChart2_carousel, ._echarts2').removeClass('d-none');
+            $('#lineChart1_carousel, ._echarts1').addClass('d-none');
+            lineChart2.resize();
+        }
+    }
 
     var optionSeries = function(lineChartData){
                         return [{
@@ -16,7 +44,6 @@ $(function () {
                                 }];
                        };
 
-
     $('._wrapper ._sidebar ._one').on('click', function(){
         //1) update echarts
         lineChart1.setOption({
@@ -26,6 +53,8 @@ $(function () {
         //2) update datatables
         table.rows().remove();
         table.rows.add(lineChartData1).draw();
+        //3) d-none logic
+        setDisplayFlag('device');
     });
 
     $('._wrapper ._sidebar ._two').on('click', function(){
@@ -37,6 +66,8 @@ $(function () {
         //2) update datatables
         table.rows().remove();
         table.rows.add(lineChartData2).draw();
+        //3) d-none logic
+        setDisplayFlag('device');
     });
 
     $('._wrapper ._sidebar ._three').on('click', function(){
@@ -48,8 +79,14 @@ $(function () {
         //2) update datatables
         table.rows().remove();
         table.rows.add(lineChartData3).draw();
+        //3) d-none logic
+        setDisplayFlag('device');
     });
 
+    $('._wrapper ._sidebar ._warning').on('click', function(){
+        //3) d-none logic
+        setDisplayFlag('warning');
+    });
 
     $('.btn-toggle-sidebar').on('click', function () {
         $('.wrapper').toggleClass('sidebar-collapse');
@@ -63,17 +100,11 @@ $(function () {
 
     //2) model and statistic form js
     $('#_navbar_statistics_show_anchor').on('click', function(){
-        $('#_navbar_statistics_show_anchor').addClass('active');
-        $('#_navbar_model_show_anchor').removeClass('active');
-        $('._3d_model').addClass('d-none');
-        $('._datatables').removeClass('d-none');
+        setDisplayFlag('device');
     });
 
     $('#_navbar_model_show_anchor').on('click', function(){
-        $('#_navbar_statistics_show_anchor').removeClass('active');
-        $('#_navbar_model_show_anchor').addClass('active');
-        $('._3d_model').removeClass('d-none');
-        $('._datatables').addClass('d-none');
+        setDisplayFlag('model');
     });
 
     //3) toggle sidebar display

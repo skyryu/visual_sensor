@@ -179,20 +179,20 @@ echarts_draw = function() {
         yAxis: [
             {
                 type: 'value',
-                name: 'R2',
-                min: 0,
-                max: 40,
+                name: 'R1',
+                min: -40,
+                max: 0,
                 position: 'left',
                 axisLabel:{
-                    formatter: '{value} °C'
+                    formatter: '{value} mm'
                 }
             }
         ],
-        series: [{name: '1', type: 'line', data:getR2(lineChartData1)},
-                 {name: '2', type: 'line', data:getR2(lineChartData2)},
-                 {name: '3', type: 'line', data:getR2(lineChartData3)},
-                 {name: '警戒1', type: 'line', data:[24,24,24,24,24,24,24,24,24,24,24,24,24]},
-                 {name: '警戒2', type: 'line', data:[30,30,30,30,30,30,30,30,30,30,30,30,30]}
+        series: [{name: '1', type: 'line', data:getR1(lineChartData1)},
+                 {name: '2', type: 'line', data:getR1(lineChartData2)},
+                 {name: '3', type: 'line', data:getR1(lineChartData3)},
+                 {name: '警戒1', type: 'line', data:[-24,-24,-24,-24,-24,-24,-24,-24,-24,-24,-24,-24,-24]},
+                 {name: '警戒2', type: 'line', data:[-30,-30,-30,-30,-30,-30,-30,-30,-30,-30,-30,-30,-30]}
         ]
     };
     // 基于准备好的dom，初始化echarts实例

@@ -74,13 +74,24 @@ nav .dropdown-menu {
 ._visual button {
     box-shadow: none !important;
 }
-._model_or_form {
+
+._3d_model {
     min-width: 40rem;
     min-height: 40rem;
 }
 
+._model_or_form {
+    min-width: 30rem;
+    min-height: 30rem;
+}
+
 /*_echarts style*/
-._echarts .carousel {
+._echarts1 .carousel {
+    min-height: 18rem !important;
+    max-height: 30rem !important;
+    min-width: 30rem !important;
+}
+._echarts2 .carousel {
     min-height: 18rem !important;
     max-height: 30rem !important;
     min-width: 30rem !important;

@@ -1,0 +1,55 @@
+{% extends "b4template.html" %}
+{% from "sidebar_macros.html" import render_index_sidebar %}
+{% block title %}项目选择{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/testEcharts.css')}}">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-dark bg-info pl-1">
+
+    <a class="navbar-brand mr-auto" href="#">地下隧道结构安全监测云系统</a>
+
+    <span class="nav-item dropdown mr-2">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            <span>{{ current_user.username }}&nbsp;</span>
+            <span><i class="fas fa-user fa-fw"></i> </span>
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{url_for('auth.signup')}}">注册新账号</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{url_for('auth.logout')}}">退出登入</a>
+        </div>
+    </span><!-- user name dropdown end -->
+</nav><!-- navbar div end-->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid pl-0">
+    <div class="_wrapper row flex-nowrap">
+        <!-- _sidebar div start, _sidebar is the first col in wrapper -->
+        <div id='collapsibleSideBarId' class="_sidebar col-6 bg-dark pr-0">
+            {{ render_index_sidebar() }}
+        </div><!-- _sidebar div end -->
+
+        <!-- _main div start, _main is the second col in wrapper-->
+        <div class="_main col">
+            <div class="_visual row flex-xl-nowrap">
+                <div class="_model_or_form col-12 col-xl-5 p-1 m-0">
+                    <div class="_3d_model w-100 h-100">
+                        {#{ render_3d_model() }#}
+                        <figure class="figure">
+                            <img src="{{url_for('static', filename='src/map.jpg')}}" 
+                                 height="800" width="1400" style="min-width:70rem;"
+                                 class="figure-img img-fluid" alt="您的浏览器不支持地图显示">
+                        </figure>
+                    </div>
+                </div><!-- _model_or_form div end -->
+            </div><!-- _visual row end -->
+        </div><!-- _main div end -->
+    </div><!-- wrapper row end-->
+
+</div><!-- container end-->
+{% endblock %}

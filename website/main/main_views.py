@@ -3,14 +3,16 @@ Views for index page and error handles
 '''
 
 from flask import render_template, request, redirect, url_for, flash
+from flask_login import login_required, current_user
 from . import main
 from website import db
 
 @main.route('/')
 @main.route('/index')
+@login_required
 def index():
-    #return render_template('index.html')
-    return redirect(url_for('home.main'))
+    return render_template('index.html')
+    #return redirect(url_for('home.main'))
 
 @main.app_errorhandler(403)
 def permission_deny(e):

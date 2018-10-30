@@ -3,7 +3,7 @@
 {% from "3d_model_macros.html" import render_3d_model %}
 {% from "datatables_macros.html" import render_datatables %}
 {% from "echarts_carousel_macros.html" import render_echarts_carousel %}
-{% block title %}VS home{% endblock %}
+{#% block title %}VS home{% endblock %#}
 
 {% block styles %}
 {{ super() }}
@@ -55,20 +55,21 @@
         <!-- _main div start, _main is the second col in wrapper-->
         <div class="_main col">
             <div class="_visual row flex-xl-nowrap">
-                <div class="_model_or_form col-12 col-xl-5 p-1 m-0">
-                    <div class="_3d_model w-100 h-100">
-                        {{ render_3d_model() }}
-                    </div>
-                    <!--_3d_model div end-->
+                <div class="_3d_model col-12 w-100 h-100">
+                    {{ render_3d_model() }}
+                </div><!--_3d_model div end-->
+
+                <div class="_model_or_form col-12 col-xl-5 p-1 m-0 d-none">
                     <div class="_datatables w-100 h-100 d-none">
                         {{ render_datatables('example') }}
                     </div><!-- _datatables div end -->
                 </div><!-- _model_or_form div end -->
 
-                <div class="_echarts col-12 col-xl-7 p-0 pr-1 m-0">
+                <div class="_echarts1 col-12 col-xl-7 p-0 pr-1 m-0 d-none">
                     {{ render_echarts_carousel('lineChart1') }}
+                </div>
+                <div class="_echarts2 col-12 p-0 pr-1 pl-1 m-0 d-none">
                     {{ render_echarts_carousel('lineChart2') }}
-                    {#{ render_echarts_carousel('pieChart3') }#}
                 </div>
                 <!--_echarts div end-->
             </div><!-- _visual row end -->

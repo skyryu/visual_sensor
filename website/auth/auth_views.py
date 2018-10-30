@@ -28,7 +28,7 @@ def login():
         else:
             print('user login succeeds')
             login_user(user, True)
-            return redirect(request.args.get('next') or url_for('home.main'))
+            return redirect(request.args.get('next') or url_for('main.index'))
     print('after validate on submit')
     return render_template('login.html', form=form)
 
