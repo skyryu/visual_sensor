@@ -47,7 +47,7 @@ $(function () {
     $('._wrapper ._sidebar ._one').on('click', function(){
         //1) update echarts
         lineChart1.setOption({
-            title: { text: "测斜仪1(20180923)"},
+            title: { text: "静力水准仪 1901"},
             series: optionSeries(lineChartData1) 
         });
         //2) update datatables
@@ -60,7 +60,7 @@ $(function () {
     $('._wrapper ._sidebar ._two').on('click', function(){
         //1) update echarts
         lineChart1.setOption({
-            title: { text: "测斜仪2(20180923)"},
+            title: { text: "静力水准仪 1902"},
             series: optionSeries(lineChartData2)
         });
         //2) update datatables
@@ -73,7 +73,7 @@ $(function () {
     $('._wrapper ._sidebar ._three').on('click', function(){
         //1) update echarts
         lineChart1.setOption({
-            title: { text: "测斜仪3(20180923)"},
+            title: { text: "静力水准仪 1903"},
             series: optionSeries(lineChartData3)
         });
         //2) update datatables
@@ -125,7 +125,7 @@ $(function () {
     datatables_draw();
     echarts_draw();
 
-    $('._echarts').resize(function(){
+    $('._echarts1, ._echarts2').resize(function(){
         echarts_resize();
     });
 });
