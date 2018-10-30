@@ -123,6 +123,9 @@ $(function () {
     });
 
     datatables_draw();
+    $('#example').removeAttr('style');
+    $('div.dataTables_wrapper div.dataTables_filter input').css('width', '8rem');
+
     echarts_draw();
 
     $('._echarts1, ._echarts2').resize(function(){
