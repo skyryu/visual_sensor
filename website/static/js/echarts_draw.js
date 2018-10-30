@@ -580,7 +580,7 @@ echarts_draw = function() {
                 type: 'value',
                 name: 'R2',
                 min: 0,
-                max: 30,
+                max: 50,
                 position: 'right',
                 axisLabel:{
                     formatter: '{value} °C'
