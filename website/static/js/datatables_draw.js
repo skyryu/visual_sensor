@@ -24,6 +24,15 @@ datatables_draw = function() {
             {title:"时间节点", data:'now'},
             {title:"R1(mm)", data:'R1'},
             {title:"R2(°C)", data:'R2'}
-        ]
+        ],
+        "language": {
+            "info": "",
+            paginate: {
+                previous: "上页",
+                next: "下页"
+            },
+            "lengthMenu":"每页显示 _MENU_ 条记录",
+            "search":"搜索"
+        }
     });
 };
