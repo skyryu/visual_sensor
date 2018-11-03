@@ -13,4 +13,4 @@ website/__pycache__/*
 *.pyc
 
 ### src
-#website/static/src/*
+website/static/src/*
