@@ -22,7 +22,7 @@ from fab_tools import ftp_tools as ftp
 
 @task
 def test(c):
-    ftp.tar_file(c)
+    ftp.upload_static_src(c)
     '''
     auth.create_role_and_group(c)
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
@@ -72,8 +72,8 @@ def update_dist(c):
     conda.update_virtual_env(c)
     conda.update_deploy_env(c)
     bower.update_bower_pkg(c)
-    ftp.upload_static_src(c)
     db.upgrade(c)
+    ftp.upload_static_src(c)
     auth.chown_of_dist_repo(c)
     sup.d_start(c)
     nginx.reload(c)
