@@ -5,7 +5,15 @@
  */
 var lineChart1;
 var lineChart2;
-var lineChartData;
+
+
+var localChartData = {
+    s9101: [],
+    s9102: [],
+    s9103: []
+}
+
+/*
 var lineChartData1 = [
     {now:'20180920 0:00:00', R1:-8.826259, R2:21},
     {now:'20180920 1:00:00', R1:-8.870052, R2:21.2},
@@ -501,12 +509,7 @@ var getWarn = function(value){
 }
 
 var getNow = function(list) {
-    var ret = [];
-    for(var i=0;i<list.length;++i){
-        //ret.push(list[i].now.split(" ")[1]);
-        ret.push(list[i].now);
-    }
-    return ret;
+    return list.map(item=>item.now);
 }
 
 var getR1 = function(list) {
@@ -524,7 +527,7 @@ var getR2 = function(list) {
     }
     return ret;
 }
-
+*/
 echarts_resize = function () {
     lineChart1.resize();
     lineChart2.resize();
@@ -544,10 +547,6 @@ echarts_draw = function() {
         title: {
             text: "静力水准仪 1901"
         },
-        /*dataset: {
-            dimensions: ['now', 'R1', 'R2'],
-            source: lineChartData1
-        },*/
         legend: {
             data: ['R1', 'R2']
         },
@@ -563,7 +562,7 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: getNow(lineChartData1) 
+            data: localChartData.s9101.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
@@ -620,10 +619,6 @@ echarts_draw = function() {
         title: {
             text: "数据对比"
         },
-        /*dataset: {
-            dimensions: ['now', 'R1', 'R2'],
-            source: lineChartData1
-        },*/
         legend: {
             type: 'scroll',
             orient: 'vertical',
@@ -644,7 +639,7 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: getNow(lineChartData1) 
+            data: localChartData.s9101.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
@@ -691,7 +686,7 @@ echarts_draw = function() {
     lineChart1.setOption(lineChartOption1);
     lineChart2.setOption(lineChartOption2);
 
-    lineChart1.setOption({
+    /*lineChart1.setOption({
         series: [{
             name: 'R1',
             data: getR1(lineChartData1)
@@ -699,5 +694,5 @@ echarts_draw = function() {
             name: 'R2',
             data: getR2(lineChartData1)
         }]
-    });
+    });*/
 };
