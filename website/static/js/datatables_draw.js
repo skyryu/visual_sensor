@@ -19,7 +19,7 @@ datatables_draw = function() {
 var table;
 datatables_draw = function() {
     table = $('#example').DataTable({
-        data: lineChartData1,
+        data: localChartData.s9101,//default sensor
         columns:[
             {title:"时间节点", data:'now'},
             {title:"R1(mm)", data:'R1'},
