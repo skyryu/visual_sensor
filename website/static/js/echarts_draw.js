@@ -8,9 +8,14 @@ var lineChart2;
 
 
 var localChartData = {
-    s9101: [],
-    s9102: [],
-    s9103: []
+    hydrolevel1901: [],
+    hydrolevel1902: [],
+    hydrolevel1903: [],
+    clino1901: [],
+    clino1902: [],
+    clino1903: [],
+    clino1904: [],
+    clino1905: []
 }
 
 echarts_resize = function () {
@@ -47,14 +52,14 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: localChartData.s9101.map(item=>item.now)//getNow(lineChartData1) 
+            data: localChartData.hydrolevel1901.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
                 type: 'value',
                 name: 'R1',
-                min: -15,
-                max: 0,
+                //min: -15,
+                //max: 10,
                 position: 'left',
                 axisLabel:{
                     formatter: '{value} mm'
@@ -63,8 +68,8 @@ echarts_draw = function() {
             {
                 type: 'value',
                 name: 'R2',
-                min: 0,
-                max: 50,
+                //min: 0,
+                //max: 50,
                 position: 'right',
                 axisLabel:{
                     formatter: '{value} °C'
@@ -119,14 +124,14 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: localChartData.s9101.map(item=>item.now)//getNow(lineChartData1) 
+            data: localChartData.hydrolevel1901.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
                 type: 'value',
                 name: 'R1',
-                min: -40,
-                max: 0,
+                //min: -40,
+                //max: 0,
                 position: 'left',
                 axisLabel:{
                     formatter: '{value} mm'
