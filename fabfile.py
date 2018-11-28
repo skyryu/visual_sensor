@@ -65,7 +65,7 @@ def init_dist(c):
     ftp.upload_static_src(c, 
         'local_src_path', 
         'srv_src_path',
-        ['*.jpg', '*.mp4', '*.svg', '*.png', '*.doc']
+        ['*.jpg', '*.mp4', '*.svg', '*.png']
     )
     auth.chown_of_dist_repo(c)
     sup.d_start(c)
@@ -86,7 +86,7 @@ def update_dist(c):
     ftp.upload_static_src(c, 
         'local_src_path', 
         'srv_src_path',
-        ['*.jpg', '*.mp4', '*.svg', '*.png', '*.doc']
+        ['*.jpg', '*.mp4', '*.svg', '*.png']
     )
     auth.chown_of_dist_repo(c)
     sup.d_start(c)
