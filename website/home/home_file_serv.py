@@ -11,6 +11,7 @@ from . import home
 @login_required
 def download(filename):
     cwd = os.getcwd()
+    print('download:'+cwd+'/website/static/downloads/'+filename)
     response = make_response(send_from_directory(
         cwd+'/website/static/downloads', filename, as_attachment=True)
     )
