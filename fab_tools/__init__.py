@@ -50,7 +50,10 @@ Config={
 
     #ftp
     'local_src_path': '/Users/hongjin/Code/Py/git_repo/visual_sensor/website/static/src',
-    'src_path': 'website/static/src',
+    'srv_src_path': 'website/static/src',
+
+    'local_download_path': '/Users/hongjin/Code/Py/git_repo/visual_sensor/website/static/downloads',
+    'srv_download_path': 'website/static/downloads',
 }
 
 
