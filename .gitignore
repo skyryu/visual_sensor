@@ -14,4 +14,4 @@ website/__pycache__/*
 
 ### src
 website/static/src/*
-website/static/downloads/*.doc
+website/static/downloads/*

@@ -32,8 +32,8 @@ def d_start(c):
 
     info('Start launching the Supervisord')
 
-    ctl_path = c.run(_source_env_str+' && which supervisorctl').stdout.strip()
-    d_path = c.run(_source_env_str+' && which supervisord').stdout.strip()
+    ctl_path = c.run('which supervisorctl').stdout.strip()
+    d_path = c.run('which supervisord').stdout.strip()
 
     result = c.run(_source_env_str+' && sudo '+ctl_path+' '
                    +_use_config_str+' pid', hide='out', warn=True)
@@ -41,7 +41,8 @@ def d_start(c):
         info('Supervisord is already running, restarting')
         c.sudo('kill -SIGTERM '+result.stdout.strip(), echo=True)
     
-    c.run(_source_env_str+ '&& sudo '+d_path+' '+_use_config_str, echo=True, pty=True)
+    c.run(_source_env_str+' && cd '+Config['git_repo_dist_prod_link'] 
+          +' && sudo '+d_path+' '+_use_config_str, echo=True, pty=True)
 
     result = c.run(_source_env_str+' && sudo '+ctl_path+' '
                    +_use_config_str+' status', hide='out')
