@@ -29,9 +29,7 @@ def test(c):
         'srv_download_path',
         ['*.pdf']
     )
-    '''
 
-    '''
     auth.create_role_and_group(c)
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
     c.run('source /etc/anaconda/bin/activate')

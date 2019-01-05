@@ -34,6 +34,12 @@ def create_new_release(c):
     info('clone git repo to:'+new_release)
     c.run('git clone {0} {1}'.format(Config['github_repo_url'], new_release))
 
+    #introduced in feature/supportBranchBasedWebSiteDist
+    #check the README of this feature for more details
+    info('checkout branch to:'+Branch['name'])
+    c.run('cd '+new_release+'&& git checkout '+Branch['name'])
+
+    info('link {0} to {1}'.format(Config['git_repo_dist_prod_link'], new_release)
     c.sudo('rm -f '+Config['git_repo_dist_prod_link'])
     c.sudo('ln -s {0} {1}'.format(new_release, Config['git_repo_dist_prod_link']))
 
