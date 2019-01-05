@@ -7,8 +7,8 @@ from invoke import Responder
 Branch={
     #introduced in feature/supportBranchBasedWebSiteDist
     #check the README of this feature for more details
-    'name':'feature/supportBranchBasedWebSiteDist',
-    'site_root':'/srv/dist/supportBranchBasedWebSiteDist',
+    'name':'web2_archmon',
+    'site_root':'/srv/dist/web2_archmon',
 }
 
 Config={
