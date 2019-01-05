@@ -1,7 +1,7 @@
 # visual_sensor
 A flask hosted website leveraging Bootstrap4, DataTables and Echarts4.
 
-FEATURE DESCRIPTION:
+MERGED FEATURE DESCRIPTION:
 ----------------------------
 This feature branch is to enable that in the /srv/dist/ folder to support branch based
 multi-website structure like below:
