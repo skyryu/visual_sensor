@@ -3,6 +3,7 @@ git fab tools
 '''
 from datetime import datetime
 from fab_tools import info
+from fab_tools import Branch
 from fab_tools import Config
 from fab_tools import Respond
 from fabric import task
@@ -39,7 +40,7 @@ def create_new_release(c):
     info('checkout branch to:'+Branch['name'])
     c.run('cd '+new_release+'&& git checkout '+Branch['name'])
 
-    info('link {0} to {1}'.format(Config['git_repo_dist_prod_link'], new_release)
+    info('link {0} to {1}'.format(Config['git_repo_dist_prod_link'], new_release))
     c.sudo('rm -f '+Config['git_repo_dist_prod_link'])
     c.sudo('ln -s {0} {1}'.format(new_release, Config['git_repo_dist_prod_link']))
 
