@@ -19,11 +19,19 @@ def update_current_release(c):
 
 def create_new_release(c):
     info('Start disting new rlease version')
-    #here we temperarily set the owner to ec2 user for git access
+
+    #1) check site root dir existance
+    if c.run('test -d '+Config['git_repo_dist_release_path'].format(''), warn=True).failed:
+        c.sudo('mkdir -p '+Config['git_repo_dist_release_path'].format(''))
+        info('Create git repo new branch site root dir:'
+             +Config['git_repo_dist_release_path'].format(''))
+
+    #2) Here we temperarily set the owner to ec2 user for git access
     c.sudo('chown -R '+Config['ec2_usrname']+' '
            +Config['git_repo_dist_release_path'].format(''), echo=True)
     #later on the auth tool will set the owner back to www_client
 
+    #3) create new release dir to where we clone the repo into
     new_release = Config['git_repo_dist_release_path'].format(
                     '/'+datetime.utcnow().strftime('%y%m%d_%H:%M:%S')
                   )
@@ -32,14 +40,17 @@ def create_new_release(c):
         c.sudo('chown -R '+Config['ec2_usrname']+' '+new_release)
         info('Create git repo new release dir:'+new_release)
 
+    #4) clone repo
     info('clone git repo to:'+new_release)
     c.run('git clone {0} {1}'.format(Config['github_repo_url'], new_release))
 
+    #5) checkout branch
     #introduced in feature/supportBranchBasedWebSiteDist
     #check the README of this feature for more details
     info('checkout branch to:'+Branch['name'])
     c.run('cd '+new_release+'&& git checkout '+Branch['name'])
 
+    #6) set prod link to new release version
     info('link {0} to {1}'.format(Config['git_repo_dist_prod_link'], new_release))
     c.sudo('rm -f '+Config['git_repo_dist_prod_link'])
     c.sudo('ln -s {0} {1}'.format(new_release, Config['git_repo_dist_prod_link']))
