@@ -7,8 +7,8 @@ from invoke import Responder
 Branch={
     #introduced in feature/supportBranchBasedWebSiteDist
     #check the README of this feature for more details
-    'name':'master',
-    'site_root':'/srv/dist/master',
+    'name':'feature/EnableWebContainerToRouterMultipleSite',
+    'site_root':'/srv/dist/EnableWebContainerToRouterMultipleSite',
 }
 
 Config={
