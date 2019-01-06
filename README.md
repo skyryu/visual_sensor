@@ -1,7 +1,7 @@
 # visual_sensor
 A flask hosted website leveraging Bootstrap4, DataTables and Echarts4.
 
-FEATURE DESCRIPTION:EnableWebContainerToRouterMultipleSite
+MERGED FEATURE DESCRIPTION:EnableWebContainerToRouterMultipleSite
 ----------------------------
 This feature branch aims at using one Nginx config to serves 2 site of 1 domain.
 

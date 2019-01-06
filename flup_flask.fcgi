@@ -6,4 +6,6 @@ from flup.server.fcgi import WSGIServer
 from website import app
 
 if __name__ == '__main__':
-    WSGIServer(app, bindAddress='/tmp/flask_fastcgi.sock').run()
+    #after introduce feature/EnableWebContainerToRouterMultipleSite
+    #we need to specify the sock for each branch
+    WSGIServer(app, bindAddress='/tmp/flask_fastcgi.web2_archmon.sock').run()
