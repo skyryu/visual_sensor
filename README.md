@@ -1,6 +1,17 @@
 # visual_sensor
 A flask hosted website leveraging Bootstrap4, DataTables and Echarts4.
 
+MERGED FEATURE DESCRIPTION:EnableWebContainerToRouterMultipleSite
+----------------------------
+This feature branch aims at using one Nginx config to serves 2 site of 1 domain.
+
+SOLUTION:
+----------------------------
+Define 2 locations inside 1 sever block with different prefix in Nginx config.
+The 2 locations use different sock to contact different supervisor fcgi programs.
+the flup programs of different branchs also bind corresponding sock.
+
+
 MERGED FEATURE DESCRIPTION:
 ----------------------------
 This feature branch is to enable that in the /srv/dist/ folder to support branch based
