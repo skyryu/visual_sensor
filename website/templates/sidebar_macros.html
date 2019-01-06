@@ -34,6 +34,7 @@
         <a class="_outer list-group-item align-items-start pl-0" href="#">
             <span class="align-top ml-2 mr-1"><i class="fas fa-glasses fa-fw"></i></span><span class="align-top">&nbsp;处理意见</span>
         </a>
+
         <!-- outer list item 4 -->
         <a class="_outer list-group-item align-items-start pl-0" data-toggle="collapse" href="#innerListGroup4">
             <span class="align-top ml-2 mr-1"><i class="fas fa-glasses fa-fw"></i></span><span class="align-top">&nbsp;监测报表</span>
@@ -43,11 +44,20 @@
             <a href="#" class="_inner list-group-item align-items-start pl-5"
                data-toggle="modal" data-target="#reportModal">富源北路车站周边沉降监测报表(主断面)</a>
         </div>
+        <!-- inner list group 4 end -->
 
         <!-- outer list item 5 -->
-        <a class="_outer list-group-item align-items-start pl-0" href="#">
+        <a class="_outer list-group-item align-items-start pl-0" data-toggle="collapse" href="#innerListGroup5">
             <span class="align-top ml-2 mr-1"><i class="fas fa-glasses fa-fw"></i></span><span class="align-top">&nbsp;移动巡检</span>
         </a>
+        <!-- inner list group 5 begin-->
+        <div class="list-group list-group-flush collapse" id="innerListGroup5">
+            <a href="#" class="_inner list-group-item align-items-start pl-5"
+               data-toggle="modal" data-target="#dailyCheckModal">日常检查</a>
+            <a href="#" class="_inner list-group-item align-items-start pl-5"
+               data-toggle="modal" data-target="#scheduledCheckModal">定期检查</a>
+        </div>
+        <!-- inner list group 5 end -->
     </div><!-- list group end -->
 {% endmacro %}
 

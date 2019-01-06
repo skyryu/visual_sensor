@@ -3,6 +3,9 @@
 {% from "3d_model_macros.html" import render_3d_model %}
 {% from "datatables_macros.html" import render_datatables %}
 {% from "echarts_carousel_macros.html" import render_echarts_carousel %}
+{% from "modal_macros.html" import render_daily_check_modal %}
+{% from "modal_macros.html" import render_scheduled_check_modal %}
+
 {#% block title %}VS home{% endblock %#}
 
 {% block styles %}
@@ -76,7 +79,7 @@
         </div><!-- _main div end -->
     </div><!-- wrapper row end-->
 
-    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog">
+    <div class="modal fade bd-example-modal-xl" id="reportModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body" style="height: 80vh">
@@ -91,6 +94,8 @@
         </div><!-- modal-dialog end -->
     </div><!-- modal div end -->
 
+    {{ render_daily_check_modal() }}
+    {{ render_scheduled_check_modal() }}
 </div><!-- container end-->
 {% endblock %}
 

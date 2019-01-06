@@ -1,0 +1,497 @@
+{% macro render_daily_check_modal() %}
+<div class="modal fade bd-example-modal-lg" id="dailyCheckModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class='modal-header'>
+                <h5 class="modal-title">日常检查</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">整体有无渗漏:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">有</option>
+                                    <option value="2">无</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">面板是否损坏/松动:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">损坏</option>
+                                    <option value="2">松动</option>
+                                    <option value="3">否</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">连接件是否损坏:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">是</option>
+                                    <option value="2">否</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">支撑结构是否损坏:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">是</option>
+                                    <option value="2">否</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">开启窗是否损坏:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">是</option>
+                                    <option value="2">否</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-6">结构胶是否损坏:</legend>
+                            <div class="col-6">
+                                <select id="inputState1" class="form-control">
+                                    <option selected>未检查</option>
+                                    <option value="1">是</option>
+                                    <option value="2">否</option>
+                                </select>
+                            </div>
+                        </div><!-- form-group row end -->
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </form>
+            </div><!-- modal-boday end -->
+        </div><!-- modal-content end -->
+    </div><!-- modal-dialog end -->
+</div><!-- modal div end -->
+{% endmacro %}
+
+
+{% macro render_scheduled_check_modal() %}
+<div class="modal fade bd-example-modal-lg" id="scheduledCheckModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class='modal-header'>
+                <h5 class="modal-title">定期检查</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <!-- outer list item 1 -->
+                <a class="list-group-item align-items-start bg-light text-dark font-weight-bold" data-toggle="collapse"
+                    href="#scheduledCheckModalItem1">整体</a>
+                <!-- inner form 1 begin-->
+                <div class="collapse p-2 border" id="scheduledCheckModalItem1">
+                    <form>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">垂直度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">平整度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">竖缝直线度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">横缝直线度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">拼缝直线度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </form>
+                </div><!-- inner form 1 end -->
+
+                <!-- outer list item 2 -->
+                <a class="list-group-item align-items-start bg-light text-dark font-weight-bold" data-toggle="collapse"
+                    href="#scheduledCheckModalItem2">面板</a>
+                <!-- inner form 2 begin-->
+                <div class="collapse p-2 border" id="scheduledCheckModalItem2">
+                    <form>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">品种:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">外观:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">尺寸:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">斑点划痕缺陷:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-6">承载能力/挠度:</legend>
+                                <div class="col-6">
+                                    <select id="inputState1" class="form-control">
+                                        <option value="1" selected>不满足设计要求</option>
+                                        <option value="2">满足设计要求</option>
+                                    </select>
+                                </div>
+                            </div><!-- form-group row end -->
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </form>
+                </div><!-- inner form 2 end -->
+
+                <!-- outer list item 3 -->
+                <a class="list-group-item align-items-start bg-light text-dark 
+                font-weight-bold" data-toggle="collapse" href="#scheduledCheckModalItem3">
+                连接件</a>
+                <!-- inner list group 3 begin-->
+                <div class="list-group list-group-flush collapse" id="scheduledCheckModalItem3">
+
+                    <!-- 3rd level form 3.1 begin -->
+                    <a class="list-group-item align-items-start text-body" data-toggle="collapse" href="#schCheckModalItem3_1">五金件及配件</a>
+                    <div class="collapse p-2 border" id="schCheckModalItem3_1">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">规格:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">外观:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">数量:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">螺纹紧固件承载力:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">玻璃面板连接件承载力:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">焊缝质量:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">防腐与使用功能:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </form>
+                    </div><!-- 3rd level form 3.1 end -->
+
+                    <!-- 3rd level form 3.2 begin -->
+                    <a class="list-group-item align-items-start text-body" data-toggle="collapse" href="#schCheckModalItem3_2">结构胶及密封材料</a>
+                    <div class="collapse p-2 border" id="schCheckModalItem3_2">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">尺寸:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">外观:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">注胶质量:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">硬度:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </form>
+                    </div><!-- 3rd level form 3.2 end -->
+
+                    <!-- 3rd level form 3.3 begin -->
+                    <a class="list-group-item align-items-start text-body" data-toggle="collapse" href="#schCheckModalItem3_3">构造</a>
+                    <div class="collapse p-2 border" id="schCheckModalItem3_3">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">幕墙与主体结构连接:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">转接件与立柱:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">立柱与横梁:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">硬度:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </form>
+                    </div><!-- 3rd level form 3.3 end -->
+
+                </div> <!-- inner list group 3 end -->
+
+                <!-- outer list item 4 -->
+                <a class="list-group-item align-items-start bg-light text-dark 
+                font-weight-bold" data-toggle="collapse" href="#scheduledCheckModalItem4">
+                支撑结构</a>
+                <!-- inner list group 4 begin-->
+                <div class="list-group list-group-flush collapse" id="scheduledCheckModalItem4">
+
+                    <!-- 3rd level form 4.1 begin -->
+                    <a class="list-group-item align-items-start text-body" data-toggle="collapse" href="#schCheckModalItem4_1">五金件及配件</a>
+                    <div class="collapse p-2 border" id="schCheckModalItem4_1">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">外观:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">防腐与使用功能:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </form>
+                    </div><!-- 3rd level form 4.1 end -->
+
+                    <!-- 3rd level form 4.2 begin -->
+                    <a class="list-group-item align-items-start text-body" data-toggle="collapse" href="#schCheckModalItem4_2">横梁·立柱</a>
+                    <div class="collapse p-2 border" id="schCheckModalItem4_2">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-6">承载力:</legend>
+                                    <div class="col-6">
+                                        <select id="inputState1" class="form-control">
+                                            <option value="1" selected>不满足设计要求</option>
+                                            <option value="2">满足设计要求</option>
+                                        </select>
+                                    </div>
+                                </div><!-- form-group row end -->
+                            </fieldset>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </form>
+                    </div><!-- 3rd level form 4.2 end -->
+
+                </div><!-- inner list group 4 end -->
+
+            </div><!-- modal-body end -->
+        </div><!-- modal-content end -->
+    </div><!-- modal-dialog end -->
+</div><!-- modal div end -->
+{% endmacro %}
