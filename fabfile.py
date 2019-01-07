@@ -22,14 +22,14 @@ from fab_tools import ftp_tools as ftp
 
 @task
 def test(c):
-    db.insert_testing_data(c)
-    '''
+    #db.insert_testing_data(c)
+
     ftp.upload_static_src(c, 
         'local_download_path', 
         'srv_download_path',
         ['*.pdf']
     )
-
+    '''
     auth.create_role_and_group(c)
     c.run('export PATH="$PATH:/etc/anaconda/bin"')
     c.run('source /etc/anaconda/bin/activate')

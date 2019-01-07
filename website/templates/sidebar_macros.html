@@ -7,14 +7,10 @@
 
         <!-- inner list group 1 begin-->
         <div class="list-group collapse" id="innerListGroup1">
-            <a href="#" id="sidebar1.1" class="_inner _one list-group-item align-items-start pl-5">静力水准仪 1901</a>
-            <a href="#" id="sidebar1.2" class="_inner _two list-group-item align-items-start pl-5">静力水准仪 1902</a>
-            <a href="#" id="sidebar1.3" class="_inner _three list-group-item align-items-start pl-5">静力水准仪 1903</a>
-            <a href="#" id="sidebar1.4" class="_inner _clino1 list-group-item align-items-start pl-5">测斜仪 1901</a>
-            <a href="#" id="sidebar1.5" class="_inner _clino2 list-group-item align-items-start pl-5">测斜仪 1902</a>
-            <a href="#" id="sidebar1.6" class="_inner _clino3 list-group-item align-items-start pl-5">测斜仪 1903</a>
-            <a href="#" id="sidebar1.7" class="_inner _clino4 list-group-item align-items-start pl-5">测斜仪 1904</a>
-            <a href="#" id="sidebar1.8" class="_inner _clino5 list-group-item align-items-start pl-5">测斜仪 1905</a>
+            <a href="#" id="sidebar1.1" class="_inner _winpre1 list-group-item align-items-start pl-5">风压1</a>
+            <a href="#" id="sidebar1.2" class="_inner _winpre2 list-group-item align-items-start pl-5">风压2</a>
+            <a href="#" id="sidebar1.3" class="_inner _winpre3 list-group-item align-items-start pl-5">风压3</a>
+            <a href="#" id="sidebar1.4" class="_inner _winpre4 list-group-item align-items-start pl-5">风压4</a>
         </div><!-- inner list group 1 end -->
 
         <!-- outer list item 2 -->
@@ -24,9 +20,7 @@
 
         <!-- inner list group 2 begin-->
         <div class="list-group list-group-flush collapse" id="innerListGroup2">
-            <a href="#" class="_inner _warning_hydrolevel list-group-item align-items-start pl-5">警告数据 (静力水准仪)</a>
-            <a href="#" class="_inner _warning_clinometer list-group-item align-items-start pl-5">警告数据 (测斜仪)</a>
-            <a href="#" class="_inner list-group-item align-items-start pl-5">监控数据</a>
+            <a href="#" class="_inner _warning_winpre list-group-item align-items-start pl-5">汇总对比</a>
             <a href="#" class="_inner list-group-item align-items-start pl-5">数据分析</a>
         </div><!-- inner list group 2 end -->
 
@@ -70,7 +64,8 @@
 
         <!-- inner list group 1 begin-->
         <div class="list-group collapse" id="innerListGroup1">
-            <a href="{{url_for('home.main')}}" id="sidebar1.1" class="_inner _one list-group-item align-items-start pl-5">贵阳地铁2号线富源北路基坑观测</a>
+            <!--a href="{{url_for('home.main')}}" id="sidebar1.1" class="_inner _one list-group-item align-items-start pl-5">贵阳地铁2号线富源北路基坑观测</a-->
+            <a href="{{url_for('home.main')}}" id="sidebar1.2" class="_inner _two list-group-item align-items-start pl-5">上海交银金融大厦监测</a>
         </div><!-- inner list group 1 end -->
     </div><!-- list group end -->
 {% endmacro %}

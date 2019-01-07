@@ -8,14 +8,18 @@ var lineChart2;
 
 
 var localChartData = {
-    hydrolevel1901: [],
+    winpre1: [],
+    winpre2: [],
+    winpre3: [],
+    winpre4: [],
+    /*hydrolevel1901: [],
     hydrolevel1902: [],
     hydrolevel1903: [],
     clino1901: [],
     clino1902: [],
     clino1903: [],
     clino1904: [],
-    clino1905: []
+    clino1905: []*/
 }
 
 echarts_resize = function () {
@@ -35,11 +39,11 @@ echarts_draw = function() {
     var lineChartOption1 = {
         backgroundColor: '#f5f5f5',
         title: {
-            text: "静力水准仪 1901"
+            text: "风压1"
         },
-        legend: {
+        /*legend: {
             data: ['R1', 'R2']
-        },
+        },*/
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -52,19 +56,19 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: localChartData.hydrolevel1901.map(item=>item.now)//getNow(lineChartData1) 
+            data: localChartData.winpre1.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
                 type: 'value',
-                name: 'R1',
+                name: '风压',
                 //min: -15,
                 //max: 10,
                 position: 'left',
                 axisLabel:{
-                    formatter: '{value} mm'
+                    formatter: '{value} kpa'
                 }
-            },
+            }/*,
             {
                 type: 'value',
                 name: 'R2',
@@ -74,7 +78,7 @@ echarts_draw = function() {
                 axisLabel:{
                     formatter: '{value} °C'
                 }
-            }
+            }*/
         ],
         dataZoom: [
             {
@@ -94,8 +98,8 @@ echarts_draw = function() {
                 }
             }
         ],
-        series: [{ name: 'R1', type: 'line', },
-                 { name: 'R2', type: 'line', yAxisIndex: 1 }
+        series: [{ name: '风压', type: 'line', }/*,
+                 { name: 'R2', type: 'line', yAxisIndex: 1 }*/
                 ]
     };
 
@@ -110,7 +114,7 @@ echarts_draw = function() {
             right: 10,
             top: 20,
             bottom: 20,
-            data: ['1', '2', '3', '警戒1', '警戒2']
+            data: ['风压1', '风压2', '风压3', '风压4']
         },
         tooltip: {
             trigger: 'axis',
@@ -124,17 +128,17 @@ echarts_draw = function() {
         },
         xAxis: {
             type: 'category',
-            data: localChartData.hydrolevel1901.map(item=>item.now)//getNow(lineChartData1) 
+            data: localChartData.winpre1.map(item=>item.now)//getNow(lineChartData1) 
         },
         yAxis: [
             {
                 type: 'value',
-                name: 'R1',
+                name: '风压',
                 //min: -40,
                 //max: 0,
                 position: 'left',
                 axisLabel:{
-                    formatter: '{value} mm'
+                    formatter: '{value} kpa'
                 }
             }
         ],
@@ -156,11 +160,10 @@ echarts_draw = function() {
                 }
             }
         ],
-        series: [{name: '1', type: 'line'},
-                 {name: '2', type: 'line'},
-                 {name: '3', type: 'line'},
-                 {name: '警戒1', type: 'line'},
-                 {name: '警戒2', type: 'line'}
+        series: [{name: '风压1', type: 'line'},
+                 {name: '风压2', type: 'line'},
+                 {name: '风压3', type: 'line'},
+                 {name: '风压4', type: 'line'}
         ]
     };
     // 基于准备好的dom，初始化echarts实例

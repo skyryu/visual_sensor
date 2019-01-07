@@ -19,11 +19,12 @@ datatables_draw = function() {
 var table;
 datatables_draw = function() {
     table = $('#example').DataTable({
-        data: localChartData.hydrolevel1901,//default sensor
+        data: localChartData.winpre1,//default sensor
         columns:[
             {title:"时间节点", data:'now'},
-            {title:"R1(mm)", data:'R1'},
-            {title:"R2(°C)", data:'R2'}
+            {title:"风压(kpa)", data:'default'/*component name*/},
+            /*{title:"R1(mm)", data:'R1'},
+            {title:"R2(°C)", data:'R2'}*/
         ],
         "language": {
             "info": "",

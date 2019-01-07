@@ -31,13 +31,14 @@ $(function () {
     //below flags tell ajax callback to re-draw which chart
     let currentChartInstance = lineChart1;
     let currentSensorDisplay = new Map([
-       ['hydrolevel1901', false], ['hydrolevel1902', false], ['hydrolevel1903', false],
-       ['clino1901', false], ['clino1902', false], ['clino1903', false], ['clino1904', false], ['clino1905', false]
+       ['winpre1', false], ['winpre2', false], ['winpre3', false], ['winpre4', false]
     ]);
-    let hydrolevelSensorSet = new Set(['hydrolevel1901', 'hydrolevel1902', 'hydrolevel1903']);
+    let winpreSet = new Set(['winpre1', 'winpre2', 'winpre3', 'winpre4']);
+    let winpreWarningSet = new Set();
+    /*let hydrolevelSensorSet = new Set(['hydrolevel1901', 'hydrolevel1902', 'hydrolevel1903']);
     let clinoSensorSet = new Set(['clino1901', 'clino1902', 'clino1903', 'clino1904', 'clino1905']);
     let hydrolevelWarningSet = new Set([{name:'警戒1', threshhold:-24}, {name:'警戒2', threshhold:-30}]);
-    let clinoWarningSet = new Set();
+    let clinoWarningSet = new Set();*/
 
     //TODO: implement observer pattern. The echarts and datatables obj are the observers, and the localChartData and 
     //the on-click listeners are the observerables.
@@ -62,12 +63,12 @@ $(function () {
 
         lineChartInstance.setOption({
             series: [{
-                        name: 'R1',
-                        data: localChartData[sensor_name].map(i=>i.R1)//getR1(lineChartData)
-                     },{
+                        name: '风压',
+                        data: localChartData[sensor_name].map(i=>i.default)//getR1(lineChartData)
+                     }/*,{
                         name: 'R2',
                         data: localChartData[sensor_name].map(i=>i.R2)//getR2(lineChartData)
-                     }   
+                     }*/   
             ],
             xAxis: {
                 type: 'category',
@@ -112,16 +113,21 @@ $(function () {
         let legendList = [];
         for(let sname of sensor_set){
             seriesList.push(
-                {name:sname.replace(/[A-Za-z]/g, ''), type:'line', data:localChartData[sname].map(item=>item.R1)}
+                {name:'风压'+sname.replace(/[A-Za-z]/g, ''), 
+                 type:'line', 
+                 data:localChartData[sname].map(item=>item.default/*comp name*/)
+                }
             );
-            legendList.push(sname.replace(/[A-Za-z]/g, ''));
+            legendList.push('风压'+sname.replace(/[A-Za-z]/g, ''));
         }
-        timeAxis = [...sensor_set][0];
-        for(let obj of warn_set){
-            seriesList.push(
-                {name:obj.name, type:'line', data:localChartData[timeAxis].map(item=>obj.threshhold)}
-            )        
-            legendList.push(obj.name);
+        timeAxis = [...sensor_set][0];/*from set to array and pick the first item*/
+        if(warn_set !== null){
+            for(let obj of warn_set){
+                seriesList.push(
+                    {name:obj.name, type:'line', data:localChartData[timeAxis].map(item=>obj.threshhold)}
+                )        
+                legendList.push(obj.name);
+            } 
         }
 
         lineChartInstance.setOption({
@@ -143,61 +149,33 @@ $(function () {
     };
 
     //1.1) device echarts
-    $('._wrapper ._sidebar ._one').on('click', function(){
-        setDeviceChatOption(lineChart1, "静力水准仪 1901", 'hydrolevel1901');
-        updateDataTables('hydrolevel1901');
+    $('._wrapper ._sidebar ._winpre1').on('click', function(){
+        setDeviceChatOption(lineChart1, "风压1", 'winpre1');
+        updateDataTables('winpre1');
+        setDisplayFlag('device');//d-none logic
+    });
+    $('._wrapper ._sidebar ._winpre2').on('click', function(){
+        setDeviceChatOption(lineChart1, "风压2", 'winpre2');
+        updateDataTables('winpre2');
+        setDisplayFlag('device');//d-none logic
+    });
+    $('._wrapper ._sidebar ._winpre3').on('click', function(){
+        setDeviceChatOption(lineChart1, "风压3", 'winpre3');
+        updateDataTables('winpre3');
+        setDisplayFlag('device');//d-none logic
+    });
+    $('._wrapper ._sidebar ._winpre4').on('click', function(){
+        setDeviceChatOption(lineChart1, "风压4", 'winpre4');
+        updateDataTables('winpre4');
         setDisplayFlag('device');//d-none logic
     });
 
-    $('._wrapper ._sidebar ._two').on('click', function(){
-        setDeviceChatOption(lineChart1, "静力水准仪 1902", 'hydrolevel1902');
-        updateDataTables('hydrolevel1902');
-        setDisplayFlag('device');
-    });
-
-    $('._wrapper ._sidebar ._three').on('click', function(){
-        setDeviceChatOption(lineChart1, "静力水准仪 1903", 'hydrolevel1903');
-        updateDataTables('hydrolevel1903');
-        setDisplayFlag('device');
-    });
-
-    $('._wrapper ._sidebar ._clino1').on('click', function(){
-        setDeviceChatOption(lineChart1, "测斜仪 1901", 'clino1901');
-        updateDataTables('clino1901');
-        setDisplayFlag('device');
-    });
-    $('._wrapper ._sidebar ._clino2').on('click', function(){
-        setDeviceChatOption(lineChart1, "测斜仪 1902", 'clino1902');
-        updateDataTables('clino1902');
-        setDisplayFlag('device');
-    });
-    $('._wrapper ._sidebar ._clino3').on('click', function(){
-        setDeviceChatOption(lineChart1, "测斜仪 1903", 'clino1903');
-        updateDataTables('clino1903');
-        setDisplayFlag('device');
-    });
-    $('._wrapper ._sidebar ._clino4').on('click', function(){
-        setDeviceChatOption(lineChart1, "测斜仪 1904", 'clino1904');
-        updateDataTables('clino1904');
-        setDisplayFlag('device');
-    });
-    $('._wrapper ._sidebar ._clino5').on('click', function(){
-        setDeviceChatOption(lineChart1, "测斜仪 1905", 'clino1905');
-        updateDataTables('clino1905');
-        setDisplayFlag('device');
-    });
-
     //1.2) warning echarts
-    $('._wrapper ._sidebar ._warning_hydrolevel').on('click', function(){
-        setWarningChatOption(lineChart2, null, hydrolevelSensorSet, hydrolevelWarningSet);
+    $('._wrapper ._sidebar ._warning_winpre').on('click', function(){
+        setWarningChatOption(lineChart2, null, winpreSet, winpreWarningSet);
         setDisplayFlag('warning');
     });
 
-    $('._wrapper ._sidebar ._warning_clinometer').on('click', function(){
-        setWarningChatOption(lineChart2, null, clinoSensorSet, clinoWarningSet);
-        setDisplayFlag('warning');
-    });
-    
 
     //2) model and statistic form js
     $('#_navbar_statistics_show_anchor').on('click', function(){
@@ -250,7 +228,7 @@ $(function () {
                         return length===0?'20180920 13:00:00':localChartData[sensor][length-1].now;
                     })(), 
                     sensor: sensor,
-                    limit: 100 
+                    limit: 1000 
                 },
                 type: "GET",
                 dataType : "json",
@@ -274,8 +252,8 @@ $(function () {
                             setDeviceChatOption(currentChartInstance, null, sensor);
                         }
                         else{//linechart2 warning chart
-                            let warningSet = hydrolevelSensorSet.has(sensor)?hydrolevelSensorSet:clinoSensorSet;
-                            setWarningChatOption(currentChartInstance, null, warningSet)
+                            //let warningSet = hydrolevelSensorSet.has(sensor)?hydrolevelSensorSet:clinoSensorSet;
+                            setWarningChatOption(currentChartInstance, null, winpreSet)
                         }
                         updateDataTables(sensor);
                     }
@@ -286,7 +264,7 @@ $(function () {
                 setTimeout(function(){
                     getSensorData(sensor);
                 }, intervalTime);
-                console.log("what's the interval time ? "+intervalTime);
+                //console.log("what's the interval time ? "+intervalTime);
             }
         ).catch(
             error => {
@@ -303,13 +281,9 @@ $(function () {
         );
     }
 
-    setTimeout(getSensorData('hydrolevel1901'), intervalTime);
-    setTimeout(getSensorData('hydrolevel1902'), intervalTime);
-    setTimeout(getSensorData('hydrolevel1903'), intervalTime);
-    setTimeout(getSensorData('clino1901'), intervalTime);
-    setTimeout(getSensorData('clino1902'), intervalTime);
-    setTimeout(getSensorData('clino1903'), intervalTime);
-    setTimeout(getSensorData('clino1904'), intervalTime);
-    setTimeout(getSensorData('clino1905'), intervalTime);
+    setTimeout(getSensorData('winpre1'), intervalTime);
+    setTimeout(getSensorData('winpre2'), intervalTime);
+    setTimeout(getSensorData('winpre3'), intervalTime);
+    setTimeout(getSensorData('winpre4'), intervalTime);
     
 });//doc on ready func end

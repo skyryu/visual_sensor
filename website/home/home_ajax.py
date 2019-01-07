@@ -57,6 +57,12 @@ def get_sensor_data():
     #         {"R1":"12.3","R2":0.0,"now":"Mon, 19 Nov 2018 16:19:16 GMT"}
     #        ]}
     ret = []
+
+    for item in result:
+        if item.component_name == 'default':
+            ret.append({'now':item.time_stamp.strftime('%Y%m%d %H:%M:%S'), 'default':item.value})
+
+    '''
     for item in result:
         if item.component_name == 'R1':
             ret.append({'now':item.time_stamp.strftime('%Y%m%d %H:%M:%S'), 'R1':item.value, 'R2':'0.0'})
@@ -73,6 +79,7 @@ def get_sensor_data():
                 ret[index]['R2'] = item.value
             else:#index < len & R2 time stamp > ret[index].time stamp
                 ret.insert(index, {'now':item.time_stamp.strftime('%Y%m%d %H:%M:%S'), 'R1':'0.0', 'R2':item.value})
+    '''
 
     return jsonify(data=ret)
     '''
