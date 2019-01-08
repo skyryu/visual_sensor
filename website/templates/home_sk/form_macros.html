@@ -1,0 +1,8 @@
+{% macro render_field(field) %}
+    <div class="form-group {% if field.errors %}_invalid_input{%else%}_valid_input{%endif%}">
+        {{ field(**kwargs)|safe}}
+        {% for error in field.errors %}
+            <div class="{% if not field.errors %}d-none{%else%}_invalid_feedback{%endif%}">{{error}}</div>
+        {%endfor%}
+    </div>
+{% endmacro %}

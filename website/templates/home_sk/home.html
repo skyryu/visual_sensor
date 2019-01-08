@@ -1,0 +1,118 @@
+{% extends "home_sk/b4template.html" %}
+{% from "home_sk/sidebar_macros.html" import render_sidebar %}
+{% from "home_sk/3d_model_macros.html" import render_3d_model %}
+{% from "home_sk/datatables_macros.html" import render_datatables %}
+{% from "home_sk/echarts_carousel_macros.html" import render_echarts_carousel %}
+{% from "home_sk/modal_macros.html" import render_daily_check_modal, render_scheduled_check_modal %}
+
+{#% block title %}VS home{% endblock %#}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',
+        filename='DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/testEcharts.css')}}">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-dark bg-info pl-1">
+
+    <a id='sidebarToggleIcon' class="nav-item btn btn-info mr-1">
+        <span class="navbar-toggler-icon"></span>
+    </a><!-- sidebar toggle icon end -->
+
+    <div class="_navbar_switcher nav-item mr-auto">
+        <span class="d-inline-flex">
+            <a id="_navbar_model_show_anchor" class="btn btn-sm btn-info border-0 shadow-lg active" href="#"
+                role="button">模型显示</a>
+            <a id="_navbar_statistics_show_anchor" class="btn btn-sm btn-info border-0 shadow-lg" href="#"
+                role="button">数据显示</a>
+        </span>
+    </div><!-- _navbar_switcher end -->
+
+    <a class="navbar-brand mr-auto" href="#">上海SK大厦智能监测管理</a>
+
+    <span class="nav-item dropdown mr-2">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            <span>{{ current_user.username }}&nbsp;</span>
+            <span><i class="fas fa-user fa-fw"></i> </span>
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{url_for('auth.signup')}}">注册新账号</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{url_for('auth.logout')}}">退出登入</a>
+        </div>
+    </span><!-- user name dropdown end -->
+</nav><!-- navbar div end-->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid pl-0">
+    <div class="_wrapper row flex-nowrap">
+        <!-- _sidebar div start, _sidebar is the first col in wrapper -->
+        <div id='collapsibleSideBarId' class="_sidebar col-6 bg-dark pr-0">
+            {{ render_sidebar() }}
+        </div><!-- _sidebar div end -->
+
+        <!-- _main div start, _main is the second col in wrapper-->
+        <div class="_main col">
+            <div class="_visual row flex-xl-nowrap">
+                <div class="_3d_model col-12 w-100 h-100">
+                    {{ render_3d_model() }}
+                </div><!--_3d_model div end-->
+
+                <div class="_model_or_form col-12 col-xl-5 p-1 m-0 d-none">
+                    <div class="_datatables w-100 h-100 d-none">
+                        {{ render_datatables('example') }}
+                    </div><!-- _datatables div end -->
+                </div><!-- _model_or_form div end -->
+
+                <div class="_echarts1 col-12 col-xl-7 p-0 pr-1 m-0 d-none">
+                    {{ render_echarts_carousel('lineChart1') }}
+                </div>
+                <div class="_echarts2 col-12 p-0 pr-1 pl-1 m-0 d-none">
+                    {{ render_echarts_carousel('lineChart2') }}
+                </div>
+                <!--_echarts div end-->
+            </div><!-- _visual row end -->
+        </div><!-- _main div end -->
+    </div><!-- wrapper row end-->
+
+    <div class="modal fade bd-example-modal-xl" id="reportModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="height: 80vh">
+                <embed src="{{url_for('static', filename='downloads/report.pdf')}}"
+                       type="application/pdf" width="100%" height="100%">
+            </div><!-- modal-boday end -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+              <a class="btn btn-primary" href="{{url_for('.download', filename='report.pdf')}}">下载</a>
+            </div><!-- modal-footer end -->
+          </div><!-- modal-content end -->
+        </div><!-- modal-dialog end -->
+    </div><!-- modal div end -->
+
+    {{ render_daily_check_modal() }}
+    {{ render_scheduled_check_modal() }}
+</div><!-- container end-->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block OptionalJS %}
+{{ super() }}
+<script src="{{url_for('static', filename='js/vendor/echarts.common.min.js')}}"></script>
+<script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/vendor/jquery.resize.event.min.js')}}"></script>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $GET_SENSOR_DATA = "{{ url_for('.get_sensor_data') }}";
+</script>
+<script src="{{url_for('static', filename='js/home_sk/echarts_draw.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_sk/datatables_draw.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_sk/draw_components.js')}}"></script>
+{% endblock %}

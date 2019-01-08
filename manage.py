@@ -3,6 +3,7 @@
 from website import app, db
 from website.auth.auth_models import User  
 from website.home.home_models import SensorData
+from website.home_sk.home_models import SHSKSensorData
 from flask_script import Manager, prompt_bool
 from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime

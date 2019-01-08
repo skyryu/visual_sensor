@@ -10,7 +10,6 @@
             <a href="#" id="sidebar1.1" class="_inner _winpre1 list-group-item align-items-start pl-5">风压1</a>
             <a href="#" id="sidebar1.2" class="_inner _winpre2 list-group-item align-items-start pl-5">风压2</a>
             <a href="#" id="sidebar1.3" class="_inner _winpre3 list-group-item align-items-start pl-5">风压3</a>
-            <a href="#" id="sidebar1.4" class="_inner _winpre4 list-group-item align-items-start pl-5">风压4</a>
         </div><!-- inner list group 1 end -->
 
         <!-- outer list item 2 -->
@@ -52,20 +51,5 @@
                data-toggle="modal" data-target="#scheduledCheckModal">定期检查</a>
         </div>
         <!-- inner list group 5 end -->
-    </div><!-- list group end -->
-{% endmacro %}
-
-{% macro render_index_sidebar() %}
-    <div class="list-group list-group-flush">
-        <!-- outer list item 1 -->
-        <a class="_outer list-group-item align-items-start pl-0" data-toggle="collapse" href="#innerListGroup1">
-            <span class="align-top ml-2 mr-1"><i class="fas fa-cube fa-fw"></i></span><span class="align-top">&nbsp;项目选择</span>
-        </a>
-
-        <!-- inner list group 1 begin-->
-        <div class="list-group collapse" id="innerListGroup1">
-            <a href="{{url_for('home_sk.main')}}" id="sidebar1.1" class="_inner _one list-group-item align-items-start pl-5">上海SK大厦监测</a>
-            <a href="{{url_for('home.main')}}" id="sidebar1.2" class="_inner _two list-group-item align-items-start pl-5">上海交银金融大厦监测</a>
-        </div><!-- inner list group 1 end -->
     </div><!-- list group end -->
 {% endmacro %}

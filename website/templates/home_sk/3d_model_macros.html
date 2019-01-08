@@ -1,0 +1,47 @@
+{% macro render_3d_model() %}
+<div class="card w-100">
+    {#
+    <!-- use card header to encapsulate control buttons -->
+    <div class="card-header p-1 d-flex justify-content-center">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2 mt-1" role="group" aria-label="First group">
+                <button type="button" class="btn btn-dark btn-sm" style="box-shadow: none">移动</button>
+                <button type="button" class="btn btn-dark btn-sm">缩放</button>
+                <button type="button" class="btn btn-dark btn-sm">旋转</button>
+                <button type="button" class="btn btn-dark btn-sm">全部缩放</button>
+            </div>
+            <div class="btn-group mr-2 mt-1" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-dark btn-sm">第一人称视图</button>
+                <button id="btnGroupDrop1" type="button" class="btn btn-dark btn-sm dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    启动视图
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">视图1</a>
+                    <a class="dropdown-item" href="#">视图2</a>
+                </div>
+            </div>
+            <div class="btn-group mr-2 mt-1" role="group" aria-label="Third group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-dark btn-sm dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    模型组件
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">组件1</a>
+                    <a class="dropdown-item" href="#">组件2</a>
+                </div>
+            </div>
+        </div><!-- btn-toolbar div end -->
+    </div><!-- card-header end-->
+    #}
+
+    <div class="card-body">
+        {#<p class="card-text">show 3d model here</p>#}
+        <video src="{{url_for('static', filename='src/demo.mp4')}}"
+               autoplay loop width="100%">
+        您的浏览器不支持video标签
+        </video>
+    </div><!-- card body end -->
+
+</div><!-- card of _3d_model end-->
+{% endmacro %}

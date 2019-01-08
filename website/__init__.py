@@ -32,7 +32,9 @@ login_manager.init_app(app)
 from .auth import auth as auth_blueprint
 from .main import main as main_blueprint
 from .home import home as home_blueprint
+from .home_sk import home_sk as home_sk_blueprint
 
 app.register_blueprint(auth_blueprint, prefix='/auth')
 app.register_blueprint(main_blueprint, prefix='/main')
 app.register_blueprint(home_blueprint, prefix='/home')
+app.register_blueprint(home_sk_blueprint, prefix='/home_sk')
