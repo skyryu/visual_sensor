@@ -247,8 +247,8 @@ def db_insertSensorData():
     db.session.add(SensorData(sensor_name='winpre4', component_name='default', data_type='all', value='54', time_stamp=datetime.strptime('20181228 22:30:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SensorData(sensor_name='winpre4', component_name='default', data_type='all', value='32.5',   time_stamp=datetime.strptime('20181228 23:00:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SensorData(sensor_name='winpre4', component_name='default', data_type='all', value='34.25',  time_stamp=datetime.strptime('20181228 23:30:00', '%Y%m%d %H:%M:%S')))
-    
-    
+
+
     db.session.add(SHSKSensorData(sensor_name='winpre1', component_name='default', data_type='all', value='18.25',  time_stamp=datetime.strptime('20190108 14:00:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SHSKSensorData(sensor_name='winpre1', component_name='default', data_type='all', value='26.75',  time_stamp=datetime.strptime('20190108 14:15:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SHSKSensorData(sensor_name='winpre1', component_name='default', data_type='all', value='12.75',  time_stamp=datetime.strptime('20190108 14:30:00', '%Y%m%d %H:%M:%S')))
@@ -285,6 +285,8 @@ def db_insertSensorData():
     db.session.add(SHSKSensorData(sensor_name='winpre3', component_name='default', data_type='all', value='10.5',   time_stamp=datetime.strptime('20190108 16:15:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SHSKSensorData(sensor_name='winpre3', component_name='default', data_type='all', value='20.75',  time_stamp=datetime.strptime('20190108 16:30:00', '%Y%m%d %H:%M:%S')))
     db.session.add(SHSKSensorData(sensor_name='winpre3', component_name='default', data_type='all', value='30.75',  time_stamp=datetime.strptime('20190108 16:45:00', '%Y%m%d %H:%M:%S')))
+
+    db.session.commit()
 
 
 if __name__ == '__main__':
