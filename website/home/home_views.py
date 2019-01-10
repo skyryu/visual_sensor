@@ -11,4 +11,4 @@ from website import db
 @home.route('/main')
 @login_required
 def main():
-    return render_template('home.html')
+    return render_template('home_jinrong/home.html')

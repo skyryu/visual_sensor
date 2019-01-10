@@ -11,20 +11,20 @@ from website import db
 @main.route('/index')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('main/index.html')
     #return redirect(url_for('home.main'))
 
 @main.app_errorhandler(403)
 def permission_deny(e):
-    return render_template('403.html'), 403
+    return render_template('main/403.html'), 403
 
 @main.app_errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('main/404.html'), 404
 
 @main.app_errorhandler(500)
 def server_error(e):
-    return render_template('500.html'), 500
+    return render_template('main/500.html'), 500
 
 '''
 @main.app_context_processor

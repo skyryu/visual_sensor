@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}工程结构智能监测管理平台{% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    {% endblock %}
+
+    {% block headJS %}
+        <!-- FountAwesome -->
+        <script defer src="{{url_for('static', filename='js/vendor/solid.min.js')}}"></script>
+        <script defer src="{{url_for('static', filename='js/vendor/fontawesome.min.js')}}"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+            <a class="navbar-brand" href="{{url_for('main.index')}}">工程结构智能监测管理平台</a>
+        </nav><!-- navbar div end-->
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+    
+    {% block footer %}
+        <footer class="fixed-bottom">
+            {#I am a footer, hey ha !#}
+        </footer>
+    {% endblock %}
+
+    {% block OptionalJS %}
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{{url_for('static', filename='js/vendor/jquery-3.3.1.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/vendor/bootstrap.bundle.min.js')}}"></script>
+    {% endblock %}
+</body>
+
+</html>

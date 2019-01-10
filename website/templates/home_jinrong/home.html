@@ -1,10 +1,9 @@
-{% extends "b4template.html" %}
-{% from "sidebar_macros.html" import render_sidebar %}
-{% from "3d_model_macros.html" import render_3d_model %}
-{% from "datatables_macros.html" import render_datatables %}
-{% from "echarts_carousel_macros.html" import render_echarts_carousel %}
-{% from "modal_macros.html" import render_daily_check_modal %}
-{% from "modal_macros.html" import render_scheduled_check_modal %}
+{% extends "home_jinrong/b4template.html" %}
+{% from "home_jinrong/sidebar_macros.html" import render_sidebar %}
+{% from "home_jinrong/3d_model_macros.html" import render_3d_model %}
+{% from "home_jinrong/datatables_macros.html" import render_datatables %}
+{% from "home_jinrong/echarts_carousel_macros.html" import render_echarts_carousel %}
+{% from "home_jinrong/modal_macros.html" import render_daily_check_modal, render_scheduled_check_modal %}
 
 {#% block title %}VS home{% endblock %#}
 
@@ -31,7 +30,7 @@
         </span>
     </div><!-- _navbar_switcher end -->
 
-    <a class="navbar-brand mr-auto" href="#">工程结构智能监测管理平台</a>
+    <a class="navbar-brand mr-auto" href="#">上海交银金融大厦智能监测管理</a>
 
     <span class="nav-item dropdown mr-2">
         <a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -112,7 +111,7 @@
 <script type=text/javascript>
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
-<script src="{{url_for('static', filename='js/echarts_draw.js')}}"></script>
-<script src="{{url_for('static', filename='js/datatables_draw.js')}}"></script>
-<script src="{{url_for('static', filename='js/draw_components.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_jinrong/echarts_draw.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_jinrong/datatables_draw.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_jinrong/draw_components.js')}}"></script>
 {% endblock %}

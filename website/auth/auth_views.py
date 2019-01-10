@@ -30,7 +30,7 @@ def login():
             login_user(user, True)
             return redirect(request.args.get('next') or url_for('main.index'))
     print('after validate on submit')
-    return render_template('login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -44,7 +44,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('.login'))
-    return render_template('signup.html', form=form)
+    return render_template('auth/signup.html', form=form)
 
 @auth.route('/logout')
 @login_required

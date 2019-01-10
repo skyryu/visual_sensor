@@ -65,7 +65,7 @@ echarts_draw = function() {
                 //max: 10,
                 position: 'left',
                 axisLabel:{
-                    formatter: '{value} kpa'
+                    formatter: '{value} pa'
                 }
             }/*,
             {
@@ -137,7 +137,7 @@ echarts_draw = function() {
                 //max: 0,
                 position: 'left',
                 axisLabel:{
-                    formatter: '{value} kpa'
+                    formatter: '{value} pa'
                 }
             }
         ],
