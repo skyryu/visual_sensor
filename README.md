@@ -1,6 +1,15 @@
 # visual_sensor
 A flask hosted website leveraging Bootstrap4, DataTables and Echarts4.
 
+
+20190127 NEW FEATURE DESCRIPTION
+----------------------------
+Enable home page daily & scheduled check modal data persistence.
+Adding datepicker js lib to enable the check result can be pesisted at daily basis.
+- The server side data is stored in CheckTable. The DB table and AJAX API is 
+implemented in main module.
+- The frontend JS Ajax is implemented under home_jinrong & home_sk's datepicker_draw.js
+
 MERGED FEATURE DESCRIPTION:EnableWebContainerToRouterMultipleSite
 ----------------------------
 This feature branch aims at using one Nginx config to serves 2 site of 1 domain.

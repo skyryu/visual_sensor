@@ -211,8 +211,10 @@ $(function () {
         echarts_resize();
     });
 
+    //5) datepicker display
+    datepicker_draw();
 
-    //5) setInterval for AJAX
+    //6) setInterval for AJAX
     var minIntervalTime = 1000;//1sec
     var maxIntervalTime = 60*1000;//1min
     var internalDelta = 2;//multiplier for interval increasement
@@ -221,7 +223,7 @@ $(function () {
     const getSensorData = function(sensor){
         const promise = new Promise(function(resolve, reject){
             $.ajax({
-                url: $SCRIPT_ROOT + '/get_sensor_data',
+                url: $GET_SENSOR_DATA,
                 data: {// The data to send (will be converted to a query string)
                     start: (()=>{
                         let length = localChartData[sensor].length;

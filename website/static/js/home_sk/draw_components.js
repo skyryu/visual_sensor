@@ -207,7 +207,10 @@ $(function () {
     });
 
 
-    //5) setInterval for AJAX
+    //5) datepicker display
+    datepicker_draw();
+
+    //6) setInterval for AJAX
     var minIntervalTime = 1000;//1sec
     var maxIntervalTime = 60*1000;//1min
     var internalDelta = 2;//multiplier for interval increasement

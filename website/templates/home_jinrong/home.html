@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="{{url_for('static',
         filename='DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='css/testEcharts.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-datepicker3.standalone.min.css')}}">
 {% endblock %}
 
 {% block navbar %}
@@ -107,11 +108,17 @@
 <script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{url_for('static', filename='DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/vendor/jquery.resize.event.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/vendor/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/vendor/locales/bootstrap-datepicker.zh-CN.min.js')}}"></script>
 
 <script type=text/javascript>
   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $GET_SENSOR_DATA = "{{ url_for('.get_sensor_data') }}";
+  $POST_CHECK_RESULT = "{{ url_for('main.save_check_result') }}";
+  $GET_CHECK_RESULT = "{{ url_for('main.get_check_result') }}";
 </script>
 <script src="{{url_for('static', filename='js/home_jinrong/echarts_draw.js')}}"></script>
 <script src="{{url_for('static', filename='js/home_jinrong/datatables_draw.js')}}"></script>
+<script src="{{url_for('static', filename='js/home_jinrong/datepicker_draw.js')}}"></script>
 <script src="{{url_for('static', filename='js/home_jinrong/draw_components.js')}}"></script>
 {% endblock %}
